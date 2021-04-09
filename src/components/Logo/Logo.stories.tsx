@@ -15,6 +15,12 @@ export default {
         type: 'select',
         options: ['white', 'black']
       }
+    },
+    size: {
+      defaultValue: 'normal'
+    },
+    hideOnMobile: {
+      defaultValue: false
     }
   }
 } as Meta
