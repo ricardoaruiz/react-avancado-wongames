@@ -1,10 +1,20 @@
-import { renderWithTheme } from '../../utils/tests/helpers'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from 'utils/tests/helpers'
 
 import Logo from './Logo'
 
 describe('<Logo />', () => {
   it('should render correctly a white label by default', () => {
-    const { container } = renderWithTheme(<Logo />)
-    expect(container).toBeInTheDocument()
+    renderWithTheme(<Logo />)
+    expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
+      color: '#FAFAFA'
+    })
+  })
+
+  it('should render correctly a black label when color is passed', () => {
+    renderWithTheme(<Logo color="black" />)
+    expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
+      color: '#030517'
+    })
   })
 })
