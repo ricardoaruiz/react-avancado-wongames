@@ -9,7 +9,7 @@ export type ButtonProps = {
   onClick?: () => (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const Button = ({
+export const Button = ({
   children,
   size = 'medium',
   fullWidth = false,
