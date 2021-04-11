@@ -49,15 +49,18 @@ export const MenuFull = styled.nav<MenuFullProps>`
     position: fixed;
     top: 0;
     bottom: 0;
-    right: ${isOpen ? '0' : '500px'};
-    left: ${isOpen ? '0' : '-500px'};
-    visibility: ${isOpen ? 'visible' : 'hidden'};
-    opacity: ${isOpen ? 1 : 0};
-    pointer-events: ${isOpen ? 'all' : 'none'};
+    right: 0;
+    left: 0;
     height: 100vh;
     overflow: hidden;
     background-color: ${theme.colors.white};
-    transition: all 0.3s;
+
+    // animation
+    visibility: ${isOpen ? 'visible' : 'hidden'};
+    opacity: ${isOpen ? 1 : 0};
+    transform: ${isOpen ? 'translateX(0)' : 'translateX(-50rem)'};
+    pointer-events: ${isOpen ? 'all' : 'none'};
+    transition: all 0.3s ease-in-out;
 
     > svg {
       position: absolute;
