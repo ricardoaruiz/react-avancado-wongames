@@ -8,11 +8,25 @@ export default {
     children: {
       type: 'string'
     },
+    size: {
+      defaultValue: 'medium',
+      control: {
+        type: 'select',
+        options: ['small', 'medium']
+      }
+    },
     color: {
       defaultValue: 'black',
       control: {
         type: 'select',
         options: ['black', 'white']
+      }
+    },
+    lineColor: {
+      defaultValue: 'primary',
+      control: {
+        type: 'select',
+        options: ['primary', 'secondary']
       }
     }
   }

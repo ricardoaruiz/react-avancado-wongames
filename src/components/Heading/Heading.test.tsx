@@ -28,7 +28,20 @@ describe('<Heading />', () => {
       screen.getByRole('heading', {
         name: /most populars/i
       })
-    ).toHaveStyle({ 'border-left': '0.7rem solid #3CD3C1' })
+    ).toHaveStyle({ 'border-left': '0.7rem solid #F231A5' })
+  })
+
+  it('should render with left line heading with passed color', () => {
+    renderWithTheme(
+      <Heading lineLeft lineColor="primary">
+        Most Populars
+      </Heading>
+    )
+    expect(
+      screen.getByRole('heading', {
+        name: /most populars/i
+      })
+    ).toHaveStyle({ 'border-left': '0.7rem solid #F231A5' })
   })
 
   it('should render with bottom line heading', () => {
@@ -38,6 +51,38 @@ describe('<Heading />', () => {
         name: /most populars/i
       })
     ).toHaveStyleRule('border-bottom', '0.5rem solid #F231A5', {
+      modifier: '::after'
+    })
+  })
+
+  it('should render with bottom line heading with passed color', () => {
+    renderWithTheme(
+      <Heading lineBottom lineColor="secondary">
+        Most Populars
+      </Heading>
+    )
+    expect(
+      screen.getByRole('heading', {
+        name: /most populars/i
+      })
+    ).toHaveStyleRule('border-bottom', '0.5rem solid #3CD3C1', {
+      modifier: '::after'
+    })
+  })
+
+  it('should render a small heading', () => {
+    renderWithTheme(<Heading size="small">Most Populars</Heading>)
+    expect(
+      screen.getByRole('heading', {
+        name: /most populars/i
+      })
+    ).toHaveStyle({ 'font-size': '1.6rem' })
+
+    expect(
+      screen.getByRole('heading', {
+        name: /most populars/i
+      })
+    ).toHaveStyleRule('width', '3rem', {
       modifier: '::after'
     })
   })
