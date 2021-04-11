@@ -12,6 +12,7 @@ const wrapperModifiers = {
 
       &::after {
         width: 3rem;
+        bottom: -0.5rem;
       }
     `,
     medium: (theme: DefaultTheme) => css`
@@ -28,7 +29,6 @@ const wrapperModifiers = {
   `,
   lineBottom: (theme: DefaultTheme, lineColor: HeadingLineColor) => css`
     position: relative;
-    margin-bottom: ${theme.spacings.medium};
 
     &::after {
       position: absolute;
