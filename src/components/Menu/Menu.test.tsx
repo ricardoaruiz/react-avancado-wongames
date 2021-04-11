@@ -13,7 +13,7 @@ describe('<Menu />', () => {
     expect(screen.getByLabelText(/won games/i)).toBeInTheDocument()
   })
 
-  fit('should render the open/close menu', () => {
+  it('should render the open/close menu', () => {
     renderWithTheme(<Menu />)
 
     const fullMenuElement = screen.getAllByRole('navigation', {
