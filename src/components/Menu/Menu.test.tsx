@@ -13,10 +13,12 @@ describe('<Menu />', () => {
     expect(screen.getByLabelText(/won games/i)).toBeInTheDocument()
   })
 
-  it('should render the open/close menu', () => {
+  fit('should render the open/close menu', () => {
     renderWithTheme(<Menu />)
 
-    const fullMenuElement = screen.getByRole('navigation', { hidden: true })
+    const fullMenuElement = screen.getAllByRole('navigation', {
+      hidden: true
+    })[1]
     expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true')
     expect(fullMenuElement).toHaveStyle({ opacity: 0 })
 
