@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
-import { ButtonProps } from 'components/Button'
+import { BannerProps } from 'components/Button'
 import Banner from './Banner'
 
 export default {
@@ -11,7 +11,10 @@ export default {
     subtitle: '<p>Play the new <strong>CrashLands</strong> season',
     buttonLabel: 'Buy now',
     buttonLink: '/games/defy-death'
+  },
+  parameters: {
+    layout: 'fullscreen'
   }
 } as Meta
 
-export const Basic: Story<ButtonProps> = (args) => <Banner {...args} />
+export const Basic: Story<BannerProps> = (args) => <Banner {...args} />

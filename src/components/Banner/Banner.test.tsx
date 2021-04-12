@@ -12,6 +12,12 @@ const initialProps = {
 } as BannerProps
 
 describe('<Banner />', () => {
+  it('should render correctly snapshot', () => {
+    const { container } = renderWithTheme(<Banner {...initialProps} />)
+
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
   it('should render correctly', () => {
     renderWithTheme(<Banner {...initialProps} />)
 
@@ -19,6 +25,8 @@ describe('<Banner />', () => {
       'src',
       'https://source.unsplash.com/user/willianjusten/1042x580'
     )
+
+    expect(screen.getByRole('img', { name: /defy death/i })).toBeInTheDocument()
 
     expect(
       screen.getByRole('heading', { name: /defy death/i })
