@@ -22,6 +22,8 @@ exports[`<Button /> should render a medium button by default - snapshot 1`] = `
   font-weight: 600;
   outline: none;
   cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   height: 4rem;
   font-size: 1.4rem;
   padding: 0.8rem 3.2rem;
@@ -46,4 +48,4 @@ exports[`<Button /> should render a medium button by default - snapshot 1`] = `
     Buy now
   </span>
 </button>
-`
+`;
