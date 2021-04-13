@@ -10,7 +10,7 @@ export type RibbonProps = {
   size?: RibbonSize
 }
 
-const Ribbon = ({
+export const Ribbon = ({
   children,
   color = 'primary',
   size = 'normal'

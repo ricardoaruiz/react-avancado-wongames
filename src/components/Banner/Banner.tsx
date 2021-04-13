@@ -1,7 +1,7 @@
 import React from 'react'
 import sanitizeHtml from 'sanitize-html'
 
-import { Button } from 'components'
+import { Button, Ribbon, RibbonColor, RibbonSize } from 'components'
 
 import * as S from './Banner.styles'
 
@@ -11,17 +11,29 @@ export type BannerProps = {
   subtitle: string
   buttonLabel: string
   buttonLink: string
+  ribbon?: string
+  ribbonColor?: RibbonColor
+  ribbonSize?: RibbonSize
 }
 
-const Banner = ({
+export const Banner = ({
   img,
   title,
   subtitle,
   buttonLabel,
-  buttonLink
+  buttonLink,
+  ribbon,
+  ribbonColor = 'primary',
+  ribbonSize = 'normal'
 }: BannerProps) => {
   return (
     <S.Wrapper>
+      {!!ribbon && (
+        <Ribbon color={ribbonColor} size={ribbonSize}>
+          {ribbon}
+        </Ribbon>
+      )}
+
       <S.Image src={img} role="img" aria-label={title} />
 
       <S.Caption>

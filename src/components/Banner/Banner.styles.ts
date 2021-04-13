@@ -1,10 +1,22 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
+import * as Ribbon from 'components/Ribbon/Ribbon.styles'
+
 export const Wrapper = styled.main`
   ${({ theme }) => css`
     position: relative;
     color: ${theme.colors.white};
+
+    ${media.lessThan('large')`
+      ${Ribbon.Wrapper} {
+        right: 0;
+
+        &::after {
+          display: none;
+        }
+      }
+    `}
 
     ${media.greaterThan('medium')`
       box-shadow: 0 0.4rem 0.5rem rgba(0,0,0,0.2);
