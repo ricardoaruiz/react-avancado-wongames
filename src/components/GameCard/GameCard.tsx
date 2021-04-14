@@ -13,7 +13,7 @@ export type GameCardProps = {
   title: string
   developer: string
   normalPrice: number
-  offerPrice?: number
+  promotionPrice?: number
   ribbonText?: string
   withBorderRadius?: boolean
 }
@@ -23,7 +23,7 @@ const GameCard = ({
   title,
   developer,
   normalPrice,
-  offerPrice,
+  promotionPrice,
   ribbonText,
   withBorderRadius = true
 }: GameCardProps) => {
@@ -49,15 +49,16 @@ const GameCard = ({
         </S.FavButton>
       </S.InfoContainer>
 
-      <S.BuyBox hasOfferPrice={!!offerPrice}>
-        {offerPrice && (
-          <S.NormalPrice aria-label={toCurrencyString(normalPrice)}>
+      <S.BuyBox hasPromotionPrice={!!promotionPrice}>
+        {promotionPrice && (
+          <S.Price type="old" aria-label={toCurrencyString(normalPrice)}>
             {toCurrencyString(normalPrice)}
-          </S.NormalPrice>
+          </S.Price>
         )}
-        <Button className="btn-price">
-          {toCurrencyString(offerPrice || normalPrice)}
-        </Button>
+        <S.Price aria-label={toCurrencyString(promotionPrice || normalPrice)}>
+          {toCurrencyString(promotionPrice || normalPrice)}
+        </S.Price>
+
         <Button icon={<AddShoppingCart />} size="small" />
       </S.BuyBox>
     </S.Wrapper>

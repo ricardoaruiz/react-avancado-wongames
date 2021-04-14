@@ -109,30 +109,20 @@ export const FavButton = styled.div`
 export const Favorite = styled.img`
   align-self: flex-start;
 `
-type PriceProps = {
-  hasOfferPrice: boolean
+type BuyBoxProps = {
+  hasPromotionPrice: boolean
 }
 
-export const BuyBox = styled.div<PriceProps>`
-  ${({ theme, hasOfferPrice }) => css`
+export const BuyBox = styled.div<BuyBoxProps>`
+  ${({ theme, hasPromotionPrice: hasPromotionPrice }) => css`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: ${hasOfferPrice ? theme.spacings.xsmall : '0.4rem'}
+    padding: ${hasPromotionPrice ? theme.spacings.xsmall : '0.4rem'}
       ${theme.spacings.xsmall} ${theme.spacings.xsmall};
 
     ${ButtonStyles.Wrapper} {
       height: 2.5rem;
-      max-width: 8rem;
-
-      &.btn-price {
-        background: unset;
-        background-color: ${theme.colors.secondary};
-      }
-
-      & + button {
-        margin-left: 0.3rem;
-      }
 
       & svg {
         margin: 0;
@@ -148,5 +138,38 @@ export const NormalPrice = styled.span`
     color: ${theme.colors.gray};
     text-decoration: line-through;
     margin-right: ${theme.spacings.small};
+  `};
+`
+
+const priceModifiers = {
+  current: (theme: DefaultTheme) => css`
+    display: flex;
+    align-items: center;
+    background-color: ${theme.colors.secondary};
+    color: ${theme.colors.white};
+    border-radius: ${theme.border.radius};
+    padding: 0 ${theme.spacings.xxsmall};
+    height: 2.5rem;
+    margin-right: 0.4rem;
+  `,
+  old: (theme: DefaultTheme) => css`
+    color: ${theme.colors.gray};
+    text-decoration: line-through;
+    margin-right: ${theme.spacings.small};
+  `
+}
+
+type PriceProps = {
+  type?: 'current' | 'old'
+}
+
+export const Price = styled.div<PriceProps>`
+  ${({ theme, type = 'current' }) => css`
+    font-size: ${theme.font.sizes.small};
+    font-weight: ${theme.font.bold};
+    line-height: ${theme.spacings.small};
+
+     ${priceModifiers[type](theme)};
+    }
   `};
 `

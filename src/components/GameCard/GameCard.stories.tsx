@@ -36,6 +36,6 @@ WithOfferPrice.args = {
   title: 'Read dead Redemption II',
   developer: 'Rockstar Games',
   normalPrice: 235,
-  offerPrice: 215,
+  promotionPrice: 215,
   ribbonText: '20% off'
 }

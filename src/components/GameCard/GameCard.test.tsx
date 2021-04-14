@@ -31,19 +31,14 @@ describe('<GameCard />', () => {
       screen.getByRole('heading', { name: initProps.developer })
     ).toBeInTheDocument()
     expect(screen.getByLabelText(/add to whishlist/i)).toBeInTheDocument()
-    expect(
-      screen.getByRole('button', { name: /r\$ 235,00/i })
-    ).toBeInTheDocument()
+    expect(screen.getByLabelText('R$ 235,00')).toBeInTheDocument()
   })
 
   it('should render with offer price', () => {
-    renderWithTheme(<GameCard {...initProps} offerPrice={215} />)
+    renderWithTheme(<GameCard {...initProps} promotionPrice={215} />)
 
-    expect(
-      screen.getByRole('button', { name: /r\$ 215,00/i })
-    ).toBeInTheDocument()
-
-    expect(screen.getByText(/r\$ 235,00/i)).toBeInTheDocument()
+    expect(screen.getByLabelText('R$ 215,00')).toBeInTheDocument()
+    expect(screen.getByText('R$ 235,00')).toBeInTheDocument()
   })
 
   it('should render with ribbon', () => {
