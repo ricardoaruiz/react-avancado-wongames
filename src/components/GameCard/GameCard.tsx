@@ -39,15 +39,15 @@ const GameCard = ({
         <S.Image src={image} alt={title} aria-label={title} />
       </S.ImageBox>
 
-      <S.Info>
-        <div>
+      <S.InfoContainer>
+        <S.Info>
           <S.Title>{title}</S.Title>
           <S.Developer>{developer}</S.Developer>
-        </div>
+        </S.Info>
         <S.FavButton role="button">
           <FavoriteBorder size={24} aria-label="add to whishlist" />
         </S.FavButton>
-      </S.Info>
+      </S.InfoContainer>
 
       <S.BuyBox hasOfferPrice={!!offerPrice}>
         {offerPrice && (
@@ -55,7 +55,9 @@ const GameCard = ({
             {toCurrencyString(normalPrice)}
           </S.NormalPrice>
         )}
-        <Button>{toCurrencyString(offerPrice || normalPrice)}</Button>
+        <Button className="btn-price">
+          {toCurrencyString(offerPrice || normalPrice)}
+        </Button>
         <Button icon={<AddShoppingCart />} size="small" />
       </S.BuyBox>
     </S.Wrapper>

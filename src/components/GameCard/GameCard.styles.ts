@@ -34,14 +34,41 @@ export const Wrapper = styled.article<WrapperProps>`
   `};
 `
 
+// Loading effect
+const loadingImage = css`
+  background: #f6f7f8;
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  background-size: 80rem 14rem;
+  animation: placeholderShimmer 1s linear infinite forwards;
+
+  @keyframes placeholderShimmer {
+    0% {
+      background-position: -40rem 0;
+    }
+    100% {
+      background-position: 40rem 0;
+    }
+  }
+`
+
 export const ImageBox = styled.div`
   width: 100%;
   height: 13.7rem;
+  ${loadingImage}
 `
 
-export const Image = styled.img``
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+`
 
-export const Info = styled.div`
+export const InfoContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     justify-content: space-between;
@@ -49,10 +76,16 @@ export const Info = styled.div`
   `};
 `
 
+export const Info = styled.div`
+  width: calc(100% - 2.5rem);
+  word-wrap: break-word;
+`
+
 export const Title = styled.h2`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.bold};
+    max-width: calc(100% - 2.5rem);
   `};
 `
 
@@ -89,10 +122,13 @@ export const BuyBox = styled.div<PriceProps>`
       ${theme.spacings.xsmall} ${theme.spacings.xsmall};
 
     ${ButtonStyles.Wrapper} {
-      background: unset;
-      background-color: ${theme.colors.secondary};
       height: 2.5rem;
       max-width: 8rem;
+
+      &.btn-price {
+        background: unset;
+        background-color: ${theme.colors.secondary};
+      }
 
       & + button {
         margin-left: 0.3rem;

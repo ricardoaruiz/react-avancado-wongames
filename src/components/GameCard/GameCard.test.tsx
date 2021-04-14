@@ -22,13 +22,13 @@ describe('<GameCard />', () => {
     })
 
     expect(
-      screen.getByRole('img', { name: /read dead redemption ii/i })
+      screen.getByRole('img', { name: initProps.title })
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { name: /read dead redemption ii/i })
+      screen.getByRole('heading', { name: initProps.title })
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { name: /rockstar games/i })
+      screen.getByRole('heading', { name: initProps.developer })
     ).toBeInTheDocument()
     expect(screen.getByLabelText(/add to whishlist/i)).toBeInTheDocument()
     expect(

@@ -21,7 +21,8 @@ Basic.args = {
   image: '/img/red-dead-card.png',
   title: 'Read dead Redemption II',
   developer: 'Rockstar Games',
-  normalPrice: 235
+  normalPrice: 235,
+  withBorderRadius: false
 }
 
 export const WithOfferPrice: Story<GameCardProps> = (args) => (
@@ -31,7 +32,7 @@ export const WithOfferPrice: Story<GameCardProps> = (args) => (
 )
 
 WithOfferPrice.args = {
-  image: '/img/red-dead-card.png',
+  image: 'https://source.unsplash.com/user/willianjusten/1042x588',
   title: 'Read dead Redemption II',
   developer: 'Rockstar Games',
   normalPrice: 235,
