@@ -26,21 +26,16 @@ const Highlight = ({
   floatImage
 }: HighlightProps) => {
   return (
-    <S.Wrapper backgroundImage={backgroundImage}>
-      <S.Content textAlign={textAlign}>
+    <S.Wrapper backgroundImage={backgroundImage} textAlign={textAlign}>
+      {floatImage && (
+        <S.FloatImage src={floatImage} title={title} aria-label={title} />
+      )}
+      <S.Content>
         <S.Title>{title}</S.Title>
         <S.Subtitle>{subtitle}</S.Subtitle>
         <Button as="a" href={buttonLink}>
           {buttonLabel}
         </Button>
-        {floatImage && (
-          <S.FloatImage
-            img={floatImage}
-            role="img"
-            title={title}
-            aria-label={title}
-          />
-        )}
       </S.Content>
     </S.Wrapper>
   )

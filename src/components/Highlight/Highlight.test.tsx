@@ -72,10 +72,11 @@ describe('<Highlight />', () => {
       />
     )
 
-    expect(screen.getByLabelText(/read Dead it’s back/i)).toHaveStyle({
-      'background-image': 'url(/img/red-dead.png)',
-      right: 0
+    const img = screen.getByRole('img', { name: /read Dead it’s back/i })
+    expect(img).toHaveStyle({
+      justifySelf: 'end'
     })
+    expect(img).toHaveAttribute('src', '/img/red-dead.png')
   })
 
   it('should render with text right aligned and left float image', () => {
@@ -83,13 +84,14 @@ describe('<Highlight />', () => {
       <Highlight
         {...initialProps}
         textAlign="right"
-        floatImage="/img/red-dead.png"
+        floatImage="/img/red-dead1.png"
       />
     )
 
-    expect(screen.getByLabelText(/read Dead it’s back/i)).toHaveStyle({
-      'background-image': 'url(/img/red-dead.png)',
-      left: 0
+    const img = screen.getByRole('img', { name: /read Dead it’s back/i })
+    expect(img).toHaveStyle({
+      justifySelf: 'start'
     })
+    expect(img).toHaveAttribute('src', '/img/red-dead1.png')
   })
 })

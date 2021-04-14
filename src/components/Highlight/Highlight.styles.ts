@@ -3,10 +3,39 @@ import media from 'styled-media-query'
 
 import { HighlightProps } from './Highlight'
 
-type WrapperProps = Pick<HighlightProps, 'backgroundImage'>
+type WrapperProps = Pick<HighlightProps, 'backgroundImage' | 'textAlign'>
+
+const wrapperModifiers = {
+  align: {
+    left: () => css`
+      grid-template-areas: 'content floatimage';
+      grid-template-columns: 2fr 1.3fr;
+
+      ${Content} {
+        text-align: left;
+      }
+
+      ${FloatImage} {
+        justify-self: end;
+      }
+    `,
+    right: () => css`
+      grid-template-areas: 'floatimage content';
+      grid-template-columns: 1.3fr 2fr;
+
+      ${Content} {
+        text-align: right;
+      }
+
+      ${FloatImage} {
+        justify-self: start;
+      }
+    `
+  }
+}
 
 export const Wrapper = styled.section<WrapperProps>`
-  ${({ backgroundImage }) => css`
+  ${({ backgroundImage, textAlign }) => css`
     position: relative;
     display: grid;
     width: 100%;
@@ -27,37 +56,33 @@ export const Wrapper = styled.section<WrapperProps>`
     ${media.greaterThan('medium')`
       height: 32rem;
     `}
+
+    ${wrapperModifiers.align[textAlign!]};
   `};
 `
 
-type ContentProps = Pick<HighlightProps, 'textAlign'>
+export const FloatImage = styled.img`
+  ${({ theme }) => css`
+    grid-area: floatimage;
+    align-self: end;
+    max-width: 100%;
+    max-height: 23rem;
 
-const contentModifiers = {
-  align: {
-    left: () => css`
-      text-align: left;
+    z-index: ${theme.layers.base};
+    bottom: 0;
 
-      & ${FloatImage} {
-        right: 0;
-      }
-    `,
-    right: () => css`
-      text-align: right;
+    ${media.greaterThan('medium')`
+      max-height: 32rem;
+    `}
+  `};
+`
 
-      & ${FloatImage} {
-        left: 0;
-      }
-    `
-  }
-}
-
-export const Content = styled.div<ContentProps>`
-  ${({ theme, textAlign }) => css`
+export const Content = styled.div`
+  ${({ theme }) => css`
+    grid-area: content;
     z-index: ${theme.layers.base};
     color: ${theme.colors.white};
     padding: ${theme.spacings.xsmall};
-
-    ${contentModifiers.align[textAlign!]}
 
     ${media.greaterThan('medium')`
       align-self: end;
@@ -85,30 +110,6 @@ export const Subtitle = styled.h3`
 
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.large};
-    `}
-  `};
-`
-
-type FloatImageProps = {
-  img: string
-}
-
-export const FloatImage = styled.div<FloatImageProps>`
-  ${({ theme, img }) => css`
-    position: absolute;
-    width: 13.5rem;
-    height: 15.7rem;
-
-    background-image: url(${img});
-    background-position: center center;
-    background-size: cover;
-
-    z-index: ${theme.layers.base};
-    bottom: 0;
-
-    ${media.greaterThan('medium')`
-      width: 26.6rem;
-      height: 31rem;
     `}
   `};
 `
