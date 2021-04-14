@@ -64,7 +64,7 @@ describe('<Highlight />', () => {
   })
 
   it('should render with text left aligned and right float image', () => {
-    renderWithTheme(
+    const { container } = renderWithTheme(
       <Highlight
         {...initialProps}
         textAlign="left"
@@ -72,6 +72,9 @@ describe('<Highlight />', () => {
       />
     )
 
+    expect(container.firstChild).toHaveStyle({
+      'grid-template-areas': "'content floatimage'"
+    })
     const img = screen.getByRole('img', { name: /read Dead it’s back/i })
     expect(img).toHaveStyle({
       justifySelf: 'end'
@@ -80,7 +83,7 @@ describe('<Highlight />', () => {
   })
 
   it('should render with text right aligned and left float image', () => {
-    renderWithTheme(
+    const { container } = renderWithTheme(
       <Highlight
         {...initialProps}
         textAlign="right"
@@ -88,6 +91,9 @@ describe('<Highlight />', () => {
       />
     )
 
+    expect(container.firstChild).toHaveStyle({
+      'grid-template-areas': "'floatimage content'"
+    })
     const img = screen.getByRole('img', { name: /read Dead it’s back/i })
     expect(img).toHaveStyle({
       justifySelf: 'start'
