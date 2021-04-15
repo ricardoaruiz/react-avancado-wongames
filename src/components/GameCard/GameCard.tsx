@@ -18,10 +18,10 @@ export type GameCardProps = {
   ribbonText?: string
   withBorderRadius?: boolean
   isFavorite?: boolean
-  onFavoriteChange: (value: boolean) => void
+  onFavoriteChange?: (value: boolean) => void
 }
 
-const GameCard = ({
+export const GameCard = ({
   image,
   title,
   developer,
@@ -51,7 +51,13 @@ const GameCard = ({
         </S.Info>
         <S.FavButton
           role="button"
-          onClick={() => onFavoriteChange(!isFavorite)}
+          onClick={
+            onFavoriteChange
+              ? () => onFavoriteChange(!isFavorite)
+              : () => {
+                  /* nothing */
+                }
+          }
         >
           {!isFavorite && (
             <FavoriteBorder size={24} aria-label="add to whishlist" />

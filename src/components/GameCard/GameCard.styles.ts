@@ -16,6 +16,9 @@ type WrapperProps = Pick<GameCardProps, 'withBorderRadius'>
 
 export const Wrapper = styled.article<WrapperProps>`
   ${({ theme, withBorderRadius }) => css`
+    display: flex;
+    flex-direction: column;
+
     position: relative;
     max-width: 29.2rem;
     background-color: ${theme.colors.white};
@@ -115,9 +118,10 @@ type BuyBoxProps = {
 
 export const BuyBox = styled.div<BuyBoxProps>`
   ${({ theme, hasPromotionPrice: hasPromotionPrice }) => css`
+    flex: 1;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
     padding: ${hasPromotionPrice ? theme.spacings.xsmall : '0.4rem'}
       ${theme.spacings.xsmall} ${theme.spacings.xsmall};
 

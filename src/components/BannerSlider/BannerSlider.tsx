@@ -8,7 +8,7 @@ export type BannerSliderProps = {
   items: BannerProps[]
 }
 
-const settings: SliderSettings = {
+export const settings: SliderSettings = {
   arrows: false,
   dots: true,
   infinite: false,
