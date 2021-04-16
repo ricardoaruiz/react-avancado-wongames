@@ -80,11 +80,11 @@ exports[`<Banner /> should render correctly snapshot 1`] = `
 }
 
 @media (max-width:1170px) {
-  .c0 .sc-egiSv {
+  .c0 .sc-fFehDp {
     right: 0;
   }
 
-  .c0 .sc-egiSv::after {
+  .c0 .sc-fFehDp::after {
     display: none;
   }
 }
@@ -161,4 +161,4 @@ exports[`<Banner /> should render correctly snapshot 1`] = `
     </a>
   </div>
 </main>
-`;
+`

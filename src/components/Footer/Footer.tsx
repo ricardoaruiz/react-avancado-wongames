@@ -4,7 +4,7 @@ import { Logo, Heading } from 'components'
 import React from 'react'
 import * as S from './Footer.styles'
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <S.Wrapper>
       <Logo color="black" />
