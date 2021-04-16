@@ -1,5 +1,7 @@
-import Main from 'components/Main'
+import { Home as HomeTemplate } from 'templates'
 
-export default function Home() {
-  return <Main />
+export const Home = () => {
+  return <HomeTemplate />
 }
+
+export default Home

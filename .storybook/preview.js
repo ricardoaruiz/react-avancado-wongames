@@ -10,16 +10,26 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'light',
+    values: [
+      {
+        name: 'light',
+        value: theme.colors.white,
+      },
+      {
+        name: 'dark',
+        value: theme.colors.mainBg,
+      },
+    ],
+  },
   // layout: 'fullscreen',
-  // backgrounds: {
-  //   default: 'dark'
-  // }
 }
 
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
+      <GlobalStyles removeBg />
       <Story />
     </ThemeProvider>
   )
