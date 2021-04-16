@@ -16,7 +16,7 @@ export type HighlightProps = {
   floatImage?: string
 }
 
-const Highlight = ({
+export const Highlight = ({
   title,
   subtitle,
   buttonLabel,

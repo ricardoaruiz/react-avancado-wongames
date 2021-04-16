@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
 
 import Highlight, { HighlightProps } from './Highlight'
+import { basic, withFloatImage } from './mock'
 
 export default {
   title: 'Highlight',
@@ -22,13 +23,7 @@ export const Basic: Story<HighlightProps> = (args) => (
   </div>
 )
 
-Basic.args = {
-  title: 'Read Dead it’s back',
-  subtitle: 'Come see John’s new adventures',
-  buttonLabel: 'Buy now',
-  buttonLink: 'https://wongames/red-dead',
-  backgroundImage: '/img/red-dead-bg.jpg'
-}
+Basic.args = { ...basic }
 
 export const WithFloatImage: Story<HighlightProps> = (args) => (
   <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
@@ -36,11 +31,4 @@ export const WithFloatImage: Story<HighlightProps> = (args) => (
   </div>
 )
 
-WithFloatImage.args = {
-  title: 'Read Dead it’s back',
-  subtitle: 'Come see John’s new adventures',
-  buttonLabel: 'Buy now',
-  buttonLink: 'https://wongames/red-dead',
-  backgroundImage: '/img/red-dead-bg.jpg',
-  floatImage: '/img/red-dead.png'
-}
+WithFloatImage.args = { ...withFloatImage }
