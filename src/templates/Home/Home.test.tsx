@@ -7,13 +7,13 @@ import { basic as highlightMock } from 'components/Highlight/mock'
 
 const props = {
   banners: bannersMock,
-  newGames: gamesMock,
+  newGames: [gamesMock[0]],
   mostPopularHighlight: highlightMock,
-  mostPopularGames: gamesMock,
-  upCommingGames: gamesMock,
+  mostPopularGames: [gamesMock[0]],
+  upCommingGames: [gamesMock[0]],
   upCommingHighlight: highlightMock,
-  upCommingMoreGames: gamesMock,
-  freeGames: gamesMock,
+  upCommingMoreGames: [gamesMock[0]],
+  freeGames: [gamesMock[0]],
   freeGamesHighlight: highlightMock
 }
 
