@@ -34,6 +34,15 @@ WithIcon.args = {
   icon: <AddShoppingCart />
 }
 
+export const Minimal: Story<ButtonProps> = (args) => <Button {...args} />
+
+Minimal.args = {
+  children: 'By now',
+  size: 'small',
+  icon: <AddShoppingCart />,
+  minimal: true
+}
+
 export const AsLink: Story<ButtonProps> = (args) => <Button {...args} />
 
 AsLink.args = {
