@@ -60,9 +60,11 @@ export const Home = ({
         <Heading lineLeft lineColor="secondary" color="white">
           Most popular
         </Heading>
-        <S.SectionMostPopularHighlight>
+
+        <S.SectionHighlight>
           <Highlight {...mostPopularHighlight} />
-        </S.SectionMostPopularHighlight>
+        </S.SectionHighlight>
+
         <GameCardSlider items={mostPopularGames} color="white" />
       </S.SectionMostPopular>
 
@@ -73,9 +75,9 @@ export const Home = ({
 
         <GameCardSlider items={upCommingGames} color="white" />
 
-        <S.SectionUpcomingGames>
+        <S.SectionHighlight>
           <Highlight {...upCommingHighlight} />
-        </S.SectionUpcomingGames>
+        </S.SectionHighlight>
 
         <GameCardSlider items={upCommingMoreGames} color="white" />
       </S.SectionUpcoming>
@@ -85,9 +87,9 @@ export const Home = ({
           Free games
         </Heading>
 
-        <S.SectionFreeGamesHighlight>
+        <S.SectionHighlight>
           <Highlight {...freeGamesHighlight} />
-        </S.SectionFreeGamesHighlight>
+        </S.SectionHighlight>
 
         <GameCardSlider items={freeGames} color="white" />
       </S.SectionFreeGames>

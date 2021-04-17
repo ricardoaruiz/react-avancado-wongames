@@ -22,6 +22,7 @@ export const Wrapper = styled.article<WrapperProps>`
     position: relative;
     max-width: 29.2rem;
     background-color: ${theme.colors.white};
+    border: 0.1rem solid ${theme.colors.lightGray};
 
     ${withBorderRadius && wrapperModifiers.withBorderRadius(theme)};
 
