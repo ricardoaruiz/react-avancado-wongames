@@ -1,5 +1,7 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
 import styled from 'styled-components'
+import { Email } from '@styled-icons/material-outlined/Email'
+
 import TextField, { TextFieldProps } from './TextField'
 
 export default {
@@ -9,6 +11,16 @@ export default {
     value: {
       type: 'string'
     },
+    iconPosition: {
+      defaultValue: 'left',
+      control: {
+        type: 'select',
+        options: ['left', 'right']
+      }
+    },
+    icon: {
+      type: ''
+    },
     onChange: {
       action: 'change'
     }
@@ -16,7 +28,7 @@ export default {
 } as Meta
 
 const Container = styled.div`
-  max-width: 40rem;
+  max-width: 30rem;
   margin: 0 auto;
 `
 
@@ -30,5 +42,19 @@ Basic.args = {
   label: 'Email',
   labelFor: 'email',
   placeholder: 'Email',
-  value: 'test@email.com'
+  value: ''
+}
+
+export const WithIcon: Story<TextFieldProps> = (args) => (
+  <Container>
+    <TextField {...args} />
+  </Container>
+)
+
+WithIcon.args = {
+  label: 'Email',
+  labelFor: 'email',
+  placeholder: 'Email',
+  value: '',
+  icon: <Email />
 }
