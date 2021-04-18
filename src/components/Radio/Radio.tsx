@@ -12,7 +12,7 @@ export type RadioProps = {
   onCheck?: (value: RadioValue) => void
 } & InputHTMLAttributes<HTMLInputElement>
 
-const Radio = ({
+export const Radio = ({
   label,
   labelFor,
   labelColor = 'white',

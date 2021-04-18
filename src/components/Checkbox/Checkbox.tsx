@@ -11,7 +11,7 @@ export type CheckboxProps = {
   onCheck?: (value: boolean) => void
 } & InputHTMLAttributes<HTMLInputElement>
 
-const Checkbox = ({
+export const Checkbox = ({
   label,
   labelFor = '',
   labelColor = 'white',
