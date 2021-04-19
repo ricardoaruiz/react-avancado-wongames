@@ -89,14 +89,39 @@ describe('<TextField />', () => {
   it('should render disable input when disabled is passed', () => {
     renderWithTheme(<TextField label="Email" labelFor="email" disabled />)
 
+    expect(screen.getByRole('textbox')).toBeDisabled()
     expect(screen.getByRole('textbox')).toHaveStyle({
       color: theme.colors.gray,
       cursor: 'default'
     })
-    screen.debug(screen.getByText(/email/i))
     expect(screen.getByText(/email/i)).toHaveStyle({
       color: theme.colors.gray,
       cursor: 'default'
     })
+  })
+
+  it('should render error message when is passed', () => {
+    const { container } = renderWithTheme(
+      <TextField
+        label="Email"
+        labelFor="email"
+        error="Required field"
+        icon={<Email data-testid="icon" />}
+      />
+    )
+
+    const error = screen.getByText(/required field/i)
+    expect(error).toBeInTheDocument()
+    expect(error).toHaveStyle({
+      color: theme.colors.primary
+    })
+    expect(container.querySelectorAll('div')[1]).toHaveStyle({
+      border: '1px solid #F231A5'
+    })
+    expect(screen.getByTestId('icon').parentElement).toHaveStyle({
+      color: theme.colors.primary
+    })
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })

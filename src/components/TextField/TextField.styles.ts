@@ -42,6 +42,7 @@ export const WrapperInput = styled.div<WrapperInputProps>`
     justify-content: space-between;
 
     width: 100%;
+    border: 1px solid ${theme.colors.lightGray};
     border-radius: ${theme.border.radius};
     background-color: ${theme.colors.lightGray};
     border-radius: ${theme.border.radius};
@@ -74,15 +75,26 @@ export const Icon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: ${theme.colors.gray};
 
     & svg {
       width: 2.2rem;
-      color: ${theme.colors.gray};
     }
   `};
 `
 
-type WrapperProps = Pick<TextFieldProps, 'disabled'>
+export const Error = styled.small`
+  ${({ theme }) => css`
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    color: ${theme.colors.primary};
+  `};
+`
+
+type WrapperProps = Pick<TextFieldProps, 'disabled'> & {
+  hasError: boolean
+}
 
 const wrapperModifier = {
   disabled: (theme: DefaultTheme) => css`
@@ -91,11 +103,21 @@ const wrapperModifier = {
       color: ${theme.colors.gray};
       cursor: default;
     }
+  `,
+  error: (theme: DefaultTheme) => css`
+    ${Label},
+    ${Icon} {
+      color: ${theme.colors.primary};
+    }
+    ${WrapperInput} {
+      border: 1px solid ${theme.colors.primary};
+    }
   `
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, disabled }) => css`
-    ${disabled && wrapperModifier.disabled(theme)}
+  ${({ theme, disabled, hasError }) => css`
+    ${disabled && wrapperModifier.disabled(theme)};
+    ${hasError && wrapperModifier.error(theme)};
   `};
 `

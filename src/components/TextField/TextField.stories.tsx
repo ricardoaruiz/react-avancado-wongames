@@ -58,3 +58,18 @@ WithIcon.args = {
   value: '',
   icon: <Email />
 }
+
+export const WithError: Story<TextFieldProps> = (args) => (
+  <Container>
+    <TextField {...args} />
+  </Container>
+)
+
+WithError.args = {
+  label: 'Email',
+  labelFor: 'email',
+  placeholder: 'Email',
+  value: '',
+  icon: <Email />,
+  error: 'Required field'
+}
