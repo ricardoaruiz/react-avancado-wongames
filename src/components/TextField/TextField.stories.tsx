@@ -5,7 +5,7 @@ import { Email } from '@styled-icons/material-outlined/Email'
 import TextField, { TextFieldProps } from './TextField'
 
 export default {
-  title: 'TextField',
+  title: 'Form/TextField',
   component: TextField,
   argTypes: {
     value: {
@@ -29,7 +29,6 @@ export default {
 
 const Container = styled.div`
   max-width: 30rem;
-  margin: 0 auto;
 `
 
 export const Basic: Story<TextFieldProps> = (args) => (

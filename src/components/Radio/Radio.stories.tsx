@@ -6,7 +6,7 @@ import { RadioProps } from './Radio'
 import * as RadioStyles from './Radio.styles'
 
 export default {
-  title: 'Radio',
+  title: 'Form/Radio',
   component: Radio,
   argTypes: {
     labelColor: {
