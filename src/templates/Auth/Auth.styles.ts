@@ -51,16 +51,15 @@ export const BannerContent = styled.div`
 `
 
 export const Infos = styled.div`
-  max-width: 64.6rem;
-  margin-top: -25rem;
-`
-
-export const Title = styled.h2`
   ${({ theme }) => css`
-    font-size: 5rem;
-    font-weight: ${theme.font.bold};
-    line-height: 1;
-  `}
+    max-width: 64.6rem;
+    margin-top: -25rem;
+
+    ${HeadingStyles.Wrapper} {
+      color: ${theme.colors.white};
+      line-height: 1.2;
+    }
+  `};
 `
 
 export const Subtitle = styled.h3`

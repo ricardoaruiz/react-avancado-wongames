@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './Heading.styles'
 
-export type HeadingSize = 'small' | 'medium'
+export type HeadingSize = 'small' | 'medium' | 'hudge'
 export type HeadingLineColor = 'primary' | 'secondary'
 
 export type HeadingProps = {

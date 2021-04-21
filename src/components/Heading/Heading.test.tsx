@@ -86,4 +86,13 @@ describe('<Heading />', () => {
       modifier: '::after'
     })
   })
+
+  it('should render a hudge heading', () => {
+    renderWithTheme(<Heading size="hudge">Most Populars</Heading>)
+    expect(
+      screen.getByRole('heading', {
+        name: /most populars/i
+      })
+    ).toHaveStyle({ 'font-size': '5.2rem' })
+  })
 })

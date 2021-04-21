@@ -15,7 +15,7 @@ export const Auth = ({ title, children }: AuthProps) => {
           <Logo size="normal" color="white" id="banner" />
 
           <S.Infos>
-            <S.Title>All your favorite games in one place</S.Title>
+            <Heading size="hudge">All your favorite games in one place</Heading>
             <S.Subtitle>
               <strong>WON</strong> is the best and most complete gaming
               platform.

@@ -21,6 +21,9 @@ const wrapperModifiers = {
       ${media.greaterThan('medium')`
        font-size: ${theme.font.sizes.xxlarge};
       `}
+    `,
+    hudge: (theme: DefaultTheme) => css`
+      font-size: ${theme.font.sizes.hudge};
     `
   },
   lineLeft: (theme: DefaultTheme, lineColor: HeadingLineColor) => css`
