@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-import * as TextStyles from 'components/TextField/TextField.styles'
 import * as HeadingStyles from 'components/Heading/Heading.styles'
-import * as ButtonStyles from 'components/Button/Button.styles'
 
 export const Wrapper = styled.main`
   display: grid;
@@ -106,32 +104,6 @@ export const ContentWrapper = styled.div`
       font-size: 2.4rem;
       margin-top: 9rem;
       margin-bottom: 3rem;
-    }
-
-    ${TextStyles.Wrapper} {
-      margin-bottom: 1rem;
-    }
-
-    ${ButtonStyles.Wrapper} {
-      margin-top: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    & > a:first-of-type {
-      display: block;
-      font-size: ${theme.font.sizes.xsmall};
-      text-align: right;
-      text-decoration: none;
-      color: ${theme.colors.black};
-    }
-
-    p {
-      font-size: ${theme.font.sizes.xsmall};
-      text-align: center;
-
-      & a {
-        color: ${theme.colors.secondary};
-      }
     }
 
     ${media.greaterThan('medium')`

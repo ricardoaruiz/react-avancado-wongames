@@ -35,18 +35,18 @@ describe('<TextField />', () => {
     )
   })
 
-  it('should call onChange when value is typed', async () => {
-    const onChange = jest.fn()
+  it('should call onValueChange when value is typed', async () => {
+    const onValueChange = jest.fn()
     const text = 'test@email.com'
-    renderWithTheme(<TextField onChange={onChange} />)
+    renderWithTheme(<TextField onValueChange={onValueChange} />)
 
     const inputText = screen.getByRole('textbox')
     userEvent.type(inputText, text)
 
     await waitFor(() => {
       expect(inputText).toHaveValue(text)
-      expect(onChange).toHaveBeenCalledTimes('test@email.com'.length)
-      expect(onChange).toHaveBeenCalledWith(text)
+      expect(onValueChange).toHaveBeenCalledTimes('test@email.com'.length)
+      expect(onValueChange).toHaveBeenCalledWith(text)
     })
   })
 

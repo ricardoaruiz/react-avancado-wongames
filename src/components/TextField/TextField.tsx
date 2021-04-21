@@ -13,7 +13,7 @@ export type TextFieldProps = {
   iconPosition?: TextFieldIconPositions
   disabled?: boolean
   error?: string
-  onChange?: (value: string) => void
+  onValueChange?: (value: string) => void
 } & InputHTMLAttributes<HTMLInputElement>
 
 export const TextField = ({
@@ -25,18 +25,18 @@ export const TextField = ({
   iconPosition = 'left',
   disabled = false,
   error = '',
-  onChange,
+  onValueChange,
   ...props
 }: TextFieldProps) => {
   const [inputValue, setInputValue] = React.useState(value)
 
-  const onChangeHandler = React.useCallback(
+  const onValueChangeHandler = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = e.currentTarget.value
       setInputValue(value)
-      !!onChange && onChange(value)
+      !!onValueChange && onValueChange(value)
     },
-    [onChange]
+    [onValueChange]
   )
 
   return (
@@ -51,7 +51,7 @@ export const TextField = ({
           id={labelFor}
           placeholder={placeholder}
           value={inputValue}
-          onChange={onChangeHandler}
+          onChange={onValueChangeHandler}
           disabled={disabled}
           {...props}
         />
