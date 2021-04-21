@@ -12,7 +12,7 @@ export const Auth = ({ title, children }: AuthProps) => {
     <S.Wrapper>
       <S.BannerBlock>
         <S.BannerContent>
-          <Logo size="normal" color="white" />
+          <Logo size="normal" color="white" id="banner" />
 
           <S.Infos>
             <S.Title>All your favorite games in one place</S.Title>
@@ -29,7 +29,7 @@ export const Auth = ({ title, children }: AuthProps) => {
       </S.BannerBlock>
 
       <S.Content>
-        <Logo color="black" />
+        <Logo color="black" id="content" />
         <S.ContentWrapper>
           <Heading lineLeft lineColor="secondary" size="small">
             {title}
