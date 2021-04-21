@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Email, Lock, AccountCircle } from '@styled-icons/material-outlined'
 
 import { Button, TextField } from 'components'
-import * as S from './FormSignup.styles'
+import * as S from '../Form'
 
 type SignupData = {
   name: string
@@ -33,7 +33,7 @@ export const FormSignup = ({ onSubmit }: FormSignupProps) => {
   )
 
   return (
-    <S.Form onSubmit={handleFormSubmit}>
+    <S.FormWrapper onSubmit={handleFormSubmit}>
       <TextField
         placeholder="Name"
         icon={<AccountCircle />}
@@ -69,13 +69,13 @@ export const FormSignup = ({ onSubmit }: FormSignupProps) => {
         Sign up now
       </Button>
 
-      <S.Disclamer>
+      <S.FormLink>
         Already have an account?{' '}
         <Link href="/sign-in">
           <a>Sign in</a>
         </Link>
-      </S.Disclamer>
-    </S.Form>
+      </S.FormLink>
+    </S.FormWrapper>
   )
 }
 

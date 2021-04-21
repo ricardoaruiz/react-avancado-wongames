@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Email, Lock } from '@styled-icons/material-outlined'
 
 import { Button, TextField } from 'components'
+import * as FormStyles from '../Form'
 import * as S from './FormSignin.styles'
 
 type Credentials = {
@@ -29,7 +30,7 @@ export const FormSignin = ({ onSubmit }: FormSigninProps) => {
   )
 
   return (
-    <S.Form onSubmit={handleFormSubmit}>
+    <FormStyles.FormWrapper onSubmit={handleFormSubmit}>
       <TextField
         placeholder="Email"
         icon={<Email />}
@@ -56,13 +57,13 @@ export const FormSignin = ({ onSubmit }: FormSigninProps) => {
         Sign in now
       </Button>
 
-      <S.Disclamer>
+      <FormStyles.FormLink>
         Don’t have an account?{' '}
         <Link href="/sign-up">
           <a>Sign up</a>
         </Link>
-      </S.Disclamer>
-    </S.Form>
+      </FormStyles.FormLink>
+    </FormStyles.FormWrapper>
   )
 }
 
