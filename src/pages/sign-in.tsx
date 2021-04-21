@@ -10,16 +10,18 @@ const Signin = () => {
   return (
     <div>
       <Auth title="Sign in">
-        <TextField placeholder="Email" icon={<Email />} />
-        <TextField placeholder="Password" type="password" icon={<Lock />} />
+        <form>
+          <TextField placeholder="Email" icon={<Email />} />
+          <TextField placeholder="Password" type="password" icon={<Lock />} />
 
-        <Link href="#">Forgot your password?</Link>
+          <Link href="#">Forgot your password?</Link>
 
-        <Button fullWidth>Sign in now</Button>
+          <Button fullWidth>Sign in now</Button>
 
-        <p>
-          Don’t have an account? <Link href="/sign-up">Sign up</Link>
-        </p>
+          <p>
+            Don’t have an account? <Link href="/sign-up">Sign up</Link>
+          </p>
+        </form>
       </Auth>
     </div>
   )

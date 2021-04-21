@@ -30,12 +30,12 @@ export const Auth = ({ title, children }: AuthProps) => {
 
       <S.Content>
         <Logo color="black" />
-        <S.FormContainer>
+        <S.ContentWrapper>
           <Heading lineLeft lineColor="secondary" size="small">
             {title}
           </Heading>
           {children}
-        </S.FormContainer>
+        </S.ContentWrapper>
       </S.Content>
     </S.Wrapper>
   )

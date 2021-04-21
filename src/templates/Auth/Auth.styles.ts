@@ -18,11 +18,9 @@ export const Wrapper = styled.main`
 export const BannerBlock = styled.section`
   display: none;
   position: relative;
-  background: url('/img/auth-image.png');
+  background-image: url('/img/auth-image.png');
   background-size: cover;
   background-position: center center;
-  background-repeat: no-repeat;
-  height: 100%;
 
   ${media.greaterThan('medium')`
     display: block;
@@ -31,44 +29,45 @@ export const BannerBlock = styled.section`
   &::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-color: rgba(3, 5, 23, 0.85);
   }
 `
 
 export const BannerContent = styled.div`
   ${({ theme }) => css`
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     padding: 5.5rem 5.5rem 2.5rem 5.5rem;
     z-index: ${theme.layers.base};
+    color: ${theme.colors.white};
   `};
 `
 
 export const Infos = styled.div`
   max-width: 64.6rem;
-  margin-top: -5rem;
+  margin-top: -25rem;
 `
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   ${({ theme }) => css`
     font-size: 5rem;
     font-weight: ${theme.font.bold};
-    color: ${theme.colors.white};
     line-height: 1;
   `}
 `
 
-export const Subtitle = styled.h2`
+export const Subtitle = styled.h3`
   ${({ theme }) => css`
     margin-top: 1rem;
     font-size: 2.6rem;
     font-weight: ${theme.font.normal};
-    color: ${theme.colors.white};
     line-height: 1.2;
     max-width: 50rem;
 
@@ -98,10 +97,10 @@ export const Content = styled.section`
   `};
 `
 
-export const FormContainer = styled.div`
+export const ContentWrapper = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    max-width: 36.6rem;
+    max-width: 30rem;
     padding: 0 ${theme.spacings.small};
 
     ${HeadingStyles.Wrapper} {
@@ -137,7 +136,7 @@ export const FormContainer = styled.div`
     }
 
     ${media.greaterThan('medium')`
-      width: 38rem;
+      max-width: 38rem;
 
       ${HeadingStyles.Wrapper} {
         margin-top: 6rem;
