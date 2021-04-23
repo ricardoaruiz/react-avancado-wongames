@@ -5,11 +5,9 @@ import { FormSignin } from 'components'
 
 const Signin = () => {
   return (
-    <div>
-      <Auth title="Sign in">
-        <FormSignin />
-      </Auth>
-    </div>
+    <Auth title="Sign in">
+      <FormSignin />
+    </Auth>
   )
 }
 

@@ -6,11 +6,9 @@ import { Auth } from 'templates'
 
 const Signin = () => {
   return (
-    <div>
-      <Auth title="Sign up">
-        <FormSignup />
-      </Auth>
-    </div>
+    <Auth title="Sign up">
+      <FormSignup />
+    </Auth>
   )
 }
 
