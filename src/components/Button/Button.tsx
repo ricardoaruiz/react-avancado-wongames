@@ -13,20 +13,31 @@ export type ButtonProps = {
   minimal?: boolean
 } & ButtonTypes
 
-export const Button = ({
-  children,
-  size = 'medium',
-  fullWidth = false,
-  icon,
-  minimal = false,
-  ...props
-}: ButtonProps) => {
+const Button: React.ForwardRefRenderFunction<S.WrapperProps, ButtonProps> = (
+  {
+    children,
+    size = 'medium',
+    fullWidth = false,
+    icon,
+    minimal = false,
+    ...props
+  },
+  ref
+) => {
   return (
-    <S.Wrapper size={size} fullWidth={fullWidth} minimal={minimal} {...props}>
+    <S.Wrapper
+      size={size}
+      fullWidth={fullWidth}
+      minimal={minimal}
+      ref={ref}
+      {...props}
+    >
       {!!icon && icon}
       {!!children && <span>{children}</span>}
     </S.Wrapper>
   )
 }
 
-export default Button
+const RefButton = React.forwardRef(Button)
+export { RefButton as Button }
+export default RefButton

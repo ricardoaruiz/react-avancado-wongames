@@ -70,6 +70,7 @@ export const MenuFull = styled.nav<MenuFullProps>`
     height: 100vh;
     overflow: hidden;
     background-color: ${theme.colors.white};
+    z-index: ${theme.layers.alwaysOnTop};
 
     // animation
     visibility: ${isOpen ? 'visible' : 'hidden'};

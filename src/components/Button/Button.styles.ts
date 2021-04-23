@@ -3,7 +3,7 @@ import styled, { css, DefaultTheme } from 'styled-components'
 
 import { ButtonProps } from './Button'
 
-type WrapperProps = Pick<ButtonProps, 'size' | 'fullWidth' | 'minimal'>
+export type WrapperProps = Pick<ButtonProps, 'size' | 'fullWidth' | 'minimal'>
 
 const wrapperModifiers = {
   sizes: {

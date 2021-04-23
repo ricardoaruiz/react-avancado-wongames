@@ -45,6 +45,11 @@ export const BannerContent = styled.div`
     padding: 5.5rem 5.5rem 2.5rem 5.5rem;
     z-index: ${theme.layers.base};
     color: ${theme.colors.white};
+
+    & a {
+      width: fit-content;
+      height: fit-content;
+    }
   `};
 `
 
