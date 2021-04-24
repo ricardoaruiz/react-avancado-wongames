@@ -6,7 +6,7 @@ import * as HeadingStyles from 'components/Heading/Heading.styles'
 import * as HighlightStyles from 'components/Highlight/Highlight.styles'
 import * as GameCardSliderStyles from 'components/GameCardSlider/GameCardSlider.styles'
 
-export const Wrapper = styled(Container)`
+export const Wrapper = styled(Container).attrs({ as: 'section' })`
   ${({ theme }) => css`
     ${HeadingStyles.Wrapper},
     ${GameCardSliderStyles.Wrapper},
