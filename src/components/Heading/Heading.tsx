@@ -3,11 +3,12 @@ import * as S from './Heading.styles'
 
 export type HeadingSize = 'small' | 'medium' | 'hudge'
 export type HeadingLineColor = 'primary' | 'secondary'
+export type HeadingColor = 'white' | 'black'
 
 export type HeadingProps = {
   children: React.ReactNode
   size?: HeadingSize
-  color?: 'white' | 'black'
+  color?: HeadingColor
   lineLeft?: boolean
   lineBottom?: boolean
   lineColor?: HeadingLineColor
