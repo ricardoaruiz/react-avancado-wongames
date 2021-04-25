@@ -27,7 +27,7 @@ export const settings: SliderSettings = {
   ]
 }
 
-const BannerSlider = ({ items }: BannerSliderProps) => {
+export const BannerSlider = ({ items }: BannerSliderProps) => {
   return (
     <S.Wrapper>
       <Slider settings={settings}>

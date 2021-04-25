@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  BannerSlider,
   BannerProps,
   Container,
   Footer,
@@ -10,7 +11,6 @@ import {
 } from 'components'
 
 import * as S from './Home.styles'
-import BannerSlider from 'components/BannerSlider/BannerSlider'
 import { Showcase } from 'components/Showcase'
 
 export type HomeProps = {
@@ -46,9 +46,7 @@ export const Home = ({
       </S.SectionHeader>
 
       <S.SectionNews>
-        <Container>
-          <Showcase heading="News" games2={newGames} headingColor="black" />
-        </Container>
+        <Showcase heading="News" games2={newGames} headingColor="black" />
       </S.SectionNews>
 
       <Showcase

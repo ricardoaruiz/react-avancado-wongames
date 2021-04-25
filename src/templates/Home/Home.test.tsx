@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 
@@ -19,25 +20,29 @@ const props = {
 
 import Home from './Home'
 
+// Criando mock dos componentes que não devem ser testados na home
+jest.mock('components/BannerSlider', () => ({
+  BannerSlider: () => <div data-testid="Mocked BannerSlider" />
+}))
+
+jest.mock('components/Menu', () => ({
+  Menu: () => <div data-testid="Mocked Menu" />
+}))
+
+jest.mock('components/Footer', () => ({
+  Footer: () => <div data-testid="Mocked Footer" />
+}))
+
+jest.mock('components/Showcase', () => ({
+  Showcase: () => <div data-testid="Mocked Showcase" />
+}))
+
 describe('<Home />', () => {
   it('should render menu and footer', () => {
     renderWithTheme(<Home {...props} />)
-
-    expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
-
-    expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: /most popular/i })
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: /upcomming/i })
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: /free games/i })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('heading', { name: /contact/i })
-    ).toBeInTheDocument()
+    expect(screen.getByTestId('Mocked BannerSlider')).toBeInTheDocument()
+    expect(screen.getByTestId('Mocked Menu')).toBeInTheDocument()
+    expect(screen.getAllByTestId('Mocked Showcase')).toHaveLength(4)
+    expect(screen.getByTestId('Mocked Footer')).toBeInTheDocument()
   })
 })
