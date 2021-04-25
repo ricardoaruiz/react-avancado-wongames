@@ -3,12 +3,10 @@ import React from 'react'
 import {
   BannerSlider,
   BannerProps,
-  Container,
-  Footer,
   GameCardProps,
-  HighlightProps,
-  Menu
+  HighlightProps
 } from 'components'
+import { Base } from 'templates'
 
 import * as S from './Home.styles'
 import { Showcase } from 'components/Showcase'
@@ -37,9 +35,8 @@ export const Home = ({
   freeGamesHighlight
 }: HomeProps) => {
   return (
-    <S.Wrapper>
+    <Base>
       <S.SectionHeader>
-        <Menu />
         <S.SectionBanner>
           <BannerSlider items={banners} />
         </S.SectionBanner>
@@ -67,13 +64,7 @@ export const Home = ({
         highlight={freeGamesHighlight}
         games1={freeGames}
       />
-
-      <S.SectionFooter>
-        <Container>
-          <Footer />
-        </Container>
-      </S.SectionFooter>
-    </S.Wrapper>
+    </Base>
   )
 }
 

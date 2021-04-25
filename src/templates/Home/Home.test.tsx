@@ -25,24 +25,14 @@ jest.mock('components/BannerSlider', () => ({
   BannerSlider: () => <div data-testid="Mocked BannerSlider" />
 }))
 
-jest.mock('components/Menu', () => ({
-  Menu: () => <div data-testid="Mocked Menu" />
-}))
-
-jest.mock('components/Footer', () => ({
-  Footer: () => <div data-testid="Mocked Footer" />
-}))
-
 jest.mock('components/Showcase', () => ({
   Showcase: () => <div data-testid="Mocked Showcase" />
 }))
 
 describe('<Home />', () => {
-  it('should render menu and footer', () => {
+  it('should render banner and showcases', () => {
     renderWithTheme(<Home {...props} />)
     expect(screen.getByTestId('Mocked BannerSlider')).toBeInTheDocument()
-    expect(screen.getByTestId('Mocked Menu')).toBeInTheDocument()
     expect(screen.getAllByTestId('Mocked Showcase')).toHaveLength(4)
-    expect(screen.getByTestId('Mocked Footer')).toBeInTheDocument()
   })
 })
