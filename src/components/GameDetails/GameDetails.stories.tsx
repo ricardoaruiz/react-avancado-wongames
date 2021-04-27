@@ -8,6 +8,20 @@ export default {
   title: 'Game/GameDetails',
   component: GameDetails,
   args: props,
+  argTypes: {
+    platforms: {
+      control: {
+        type: 'inline-check',
+        options: ['windows', 'linux', 'mac']
+      }
+    },
+    genres: {
+      control: {
+        type: 'inline-check',
+        options: ['Action', 'Adventure', 'Role-playing', 'RPG']
+      }
+    }
+  },
   parameters: {
     layout: 'fullscreen',
     backgrounds: {
@@ -17,7 +31,7 @@ export default {
 } as Meta
 
 const Container = styled.main`
-  max-width: 120rem;
+  max-width: 130rem;
   margin: 0 auto;
   padding: 0 0.5rem;
 `

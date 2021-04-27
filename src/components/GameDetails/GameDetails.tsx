@@ -4,14 +4,21 @@ import { Apple, Linux, Windows } from '@styled-icons/fa-brands'
 import * as S from './GameDetails.styles'
 import { Heading, MediaMatch } from 'components'
 
-export type GameDetailsPlatforms = 'windows' | 'linux' | 'apple'
+export type GameDetailsPlatforms = 'windows' | 'linux' | 'mac'
+export type GameDetailsRatings =
+  | 'BR0'
+  | 'BR10'
+  | 'BR12'
+  | 'BR14'
+  | 'BR16'
+  | 'BR18'
 export type GameDetailsProps = {
   developer: string
   releaseDate: Date
   platforms: GameDetailsPlatforms[]
   publisher: string
-  rating: string
-  genre: string
+  rating: GameDetailsRatings
+  genres: string[]
 }
 
 const platformsIcons = {
@@ -31,7 +38,7 @@ const platformsIcons = {
       aria-hidden="false"
     />
   ),
-  apple: (
+  mac: (
     <Apple
       key="logoApple"
       role="img"
@@ -41,18 +48,27 @@ const platformsIcons = {
   )
 }
 
+const ratingDescription = {
+  BR0: 'FREE',
+  BR10: '10+',
+  BR12: '12+',
+  BR14: '14+',
+  BR16: '16+',
+  BR18: '18+'
+}
+
 export const GameDetails = ({
   developer,
   releaseDate,
   platforms,
   publisher,
   rating,
-  genre
+  genres
 }: GameDetailsProps) => {
   const getReleaseDate = () => {
     const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
-      month: 'long',
+      month: 'short',
       day: 'numeric'
     }
     return new Intl.DateTimeFormat('en-US', options).format(releaseDate)
@@ -91,12 +107,12 @@ export const GameDetails = ({
 
         <S.Info>
           <S.Title>Rating</S.Title>
-          <S.Description>{rating}</S.Description>
+          <S.Description>{ratingDescription[rating]}</S.Description>
         </S.Info>
 
         <S.Info>
           <S.Title>Genres</S.Title>
-          <S.Description>{genre}</S.Description>
+          <S.Description>{genres.join(' / ')}</S.Description>
         </S.Info>
       </S.Infos>
     </S.Wrapper>

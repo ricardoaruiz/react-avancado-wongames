@@ -3,8 +3,8 @@ import { GameDetailsProps } from './GameDetails'
 export default {
   developer: 'Gearbox Software',
   releaseDate: new Date(2019, 10, 16),
-  platforms: ['windows', 'linux', 'apple'],
+  platforms: ['windows', 'linux', 'mac'],
   publisher: '2K',
-  rating: '18+',
-  genre: 'Action / Adventure'
+  rating: 'BR18',
+  genres: ['Action', 'Adventure']
 } as GameDetailsProps
