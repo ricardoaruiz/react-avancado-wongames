@@ -5,7 +5,7 @@ import { HeadingLineColor, HeadingProps } from './Heading'
 
 type WrapperProps = Omit<HeadingProps, 'children'>
 
-const wrapperModifiers = {
+export const wrapperModifiers = {
   sizes: {
     small: (theme: DefaultTheme) => css`
       font-size: ${theme.font.sizes.medium};
