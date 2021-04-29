@@ -1,9 +1,34 @@
 import React from 'react'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
-import { Game } from 'templates'
+import { Game, GameProps } from 'templates'
 
-const Index = () => {
-  return <Game />
+const Index = (props: GameProps) => {
+  return <Game {...props} />
+}
+
+// Pega os dados da página em tempo de build
+export const getStaticProps: GetStaticProps<GameProps> = async () => {
+  return {
+    props: {
+      cover:
+        'https://images.gog-statics.com/5643a7c831df452d29005caeca24c28cdbfaa6fbea5a9556b147ee26d325fa70_bg_crop_1366x655.jpg',
+      gameInfo: {
+        title: 'Red dead redemption II',
+        description:
+          'Experience the epic space strategy games that redefined the RTS genre. Control your fleet and build an armada across more than 30 single-player missions.',
+        price: 219
+      }
+    }
+  }
+}
+
+// Pega todas os possíveis paths em tempo de build para criar as diversas páginas
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [{ params: { slug: 'cyberpunk-2077' } }],
+    fallback: false
+  }
 }
 
 export default Index
