@@ -15,7 +15,7 @@ export const Base = ({ children }: BaseProps) => {
         <Menu />
       </Container>
 
-      {children}
+      <S.SectionContent>{children}</S.SectionContent>
 
       <S.SectionFooter>
         <Container>

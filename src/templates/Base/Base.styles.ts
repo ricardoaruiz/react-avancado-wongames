@@ -1,23 +1,29 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-import { Container } from 'components'
-
-export const Wrapper = styled.main``
+export const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`
+export const SectionContent = styled.section`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.xlarge};
+    flex: 1 0 auto;
+  `}
+`
 
 export const SectionFooter = styled.section`
   ${({ theme }) => css`
-    margin-top: ${theme.spacings.xxlarge};
+    margin-top: ${theme.spacings.large};
+    padding-bottom: ${theme.spacings.xsmall};
+    padding-top: ${theme.spacings.xxlarge};
     background-color: ${theme.colors.white};
-    padding-bottom: 5rem;
-
-    ${Container} {
-      padding-top: 50px;
-    }
+    clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0 100%);
 
     ${media.greaterThan('medium')`
-      padding-top: 4rem;
-      clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0 100%); 
+      padding-top: calc(${theme.spacings.xxlarge} * 2);
+      clip-path: polygon(0 15%, 100% 0%, 100% 100%, 0 100%);
     `}
   `};
 `
