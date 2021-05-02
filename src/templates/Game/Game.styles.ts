@@ -47,3 +47,13 @@ const Section = styled(Container).attrs({ as: 'section' })`
 export const SectionGameInfo = styled(Section)``
 
 export const SectionGallery = styled(Section)``
+
+export const SectionDescription = styled(Section)`
+  ${({ theme }) => css`
+    & .description__copyrights {
+      font-size: ${theme.font.sizes.xsmall};
+      color: ${theme.colors.gray};
+      margin-top: ${theme.spacings.medium};
+    }
+  `};
+`

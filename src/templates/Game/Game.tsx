@@ -6,16 +6,18 @@ import {
   GameInfoProps,
   GalleryProps,
   Gallery,
-  MediaMatch
+  MediaMatch,
+  TextContent
 } from 'components'
 
 export type GameProps = {
   cover: string
   gameInfo: GameInfoProps
   gallery?: GalleryProps
+  description: string
 }
 
-export const Game = ({ cover, gameInfo, gallery }: GameProps) => (
+export const Game = ({ cover, gameInfo, gallery, description }: GameProps) => (
   <Base>
     <S.Cover src={cover} role="image" aria-label="cover" />
 
@@ -31,6 +33,10 @@ export const Game = ({ cover, gameInfo, gallery }: GameProps) => (
           </S.SectionGallery>
         </MediaMatch>
       )}
+
+      <S.SectionDescription>
+        <TextContent title="Description" content={description} />
+      </S.SectionDescription>
     </S.Main>
   </Base>
 )
