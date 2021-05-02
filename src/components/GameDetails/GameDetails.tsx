@@ -14,7 +14,7 @@ export type GameDetailsRatings =
   | 'BR18'
 export type GameDetailsProps = {
   developer: string
-  releaseDate: Date
+  releaseDate: string
   platforms: GameDetailsPlatforms[]
   publisher: string
   rating: GameDetailsRatings
@@ -71,7 +71,9 @@ export const GameDetails = ({
       month: 'short',
       day: 'numeric'
     }
-    return new Intl.DateTimeFormat('en-US', options).format(releaseDate)
+    return new Intl.DateTimeFormat('en-US', options).format(
+      new Date(releaseDate)
+    )
   }
 
   return (

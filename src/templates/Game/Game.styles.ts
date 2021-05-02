@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
 import { Container } from 'components'
+import * as GameDetailsStyles from 'components/GameDetails/GameDetails.styles'
 
 export const Main = styled.main`
   margin-top: 20rem;
@@ -54,6 +55,18 @@ export const SectionDescription = styled(Section)`
       font-size: ${theme.font.sizes.xsmall};
       color: ${theme.colors.gray};
       margin-top: ${theme.spacings.medium};
+    }
+  `};
+`
+export const SectionDetails = styled(Section)`
+  ${({ theme }) => css`
+    ${GameDetailsStyles.Wrapper} {
+      border-bottom: 1px solid rgba(181, 181, 181, 0.3);
+      padding-bottom: ${theme.spacings.xlarge};
+
+      ${media.greaterThan('medium')`
+        padding-bottom: calc(${theme.spacings.xlarge} * 2);
+      `}
     }
   `};
 `

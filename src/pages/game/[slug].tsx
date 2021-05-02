@@ -24,6 +24,7 @@ CD PROJEKT®, Cyberpunk®, Cyberpunk 2077® are registered trademarks of CD PROJ
 CD PROJEKT S.A. All rights reserved. All other copyrights and trademarks are the property of their
 respective owners.
 </p>`
+import gameDetailsMock from 'components/GameDetails/mock'
 
 // Pega os dados da página em tempo de build
 export const getStaticProps: GetStaticProps<GameProps> = async () => {
@@ -65,7 +66,8 @@ export const getStaticProps: GetStaticProps<GameProps> = async () => {
           }
         ]
       },
-      description: descriptionHTML
+      description: descriptionHTML,
+      details: gameDetailsMock
     }
   }
 }
