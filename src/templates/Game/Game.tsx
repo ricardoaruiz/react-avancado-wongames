@@ -9,7 +9,9 @@ import {
   MediaMatch,
   TextContent,
   GameDetails,
-  GameDetailsProps
+  GameDetailsProps,
+  Showcase,
+  ShowcaseProps
 } from 'components'
 
 export type GameProps = {
@@ -18,6 +20,8 @@ export type GameProps = {
   gallery?: GalleryProps
   description: string
   details: GameDetailsProps
+  upComing: ShowcaseProps
+  recommended: ShowcaseProps
 }
 
 export const Game = ({
@@ -25,7 +29,9 @@ export const Game = ({
   gameInfo,
   gallery,
   description,
-  details
+  details,
+  upComing,
+  recommended
 }: GameProps) => (
   <Base>
     <S.Cover src={cover} role="image" aria-label="cover" />
@@ -50,6 +56,16 @@ export const Game = ({
       <S.SectionDetails>
         <GameDetails {...details} />
       </S.SectionDetails>
+
+      <S.SectionUpcoming>
+        <Showcase {...upComing} />
+      </S.SectionUpcoming>
+
+      <MediaMatch greaterThan="medium">
+        <S.SectionRecommended>
+          <Showcase {...recommended} />
+        </S.SectionRecommended>
+      </MediaMatch>
     </S.Main>
   </Base>
 )

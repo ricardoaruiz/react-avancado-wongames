@@ -3,12 +3,13 @@ import media from 'styled-media-query'
 
 import { Container } from 'components'
 import * as GameDetailsStyles from 'components/GameDetails/GameDetails.styles'
+import * as ShowCaseStyles from 'components/Showcase/Showcase.styles'
 
 export const Main = styled.main`
   margin-top: 20rem;
 
   ${media.greaterThan('medium')`
-      margin-top: 38rem;
+      margin-top: 25rem;
     `}
 `
 
@@ -70,3 +71,14 @@ export const SectionDetails = styled(Section)`
     }
   `};
 `
+export const SectionUpcoming = styled(Section)`
+  ${({ theme }) => css`
+    ${media.lessThan('medium')`
+      ${ShowCaseStyles.SectionHighlight} {
+        margin-left: -${theme.grid.gutter};
+        margin-right: -${theme.grid.gutter};
+      }    
+    `}
+  `};
+`
+export const SectionRecommended = styled(Section)``

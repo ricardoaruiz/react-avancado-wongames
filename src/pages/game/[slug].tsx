@@ -25,6 +25,8 @@ CD PROJEKT S.A. All rights reserved. All other copyrights and trademarks are the
 respective owners.
 </p>`
 import gameDetailsMock from 'components/GameDetails/mock'
+import gamesMock from 'components/GameCardSlider/mock'
+import { basic as highlightMock } from 'components/Highlight/mock'
 
 // Pega os dados da página em tempo de build
 export const getStaticProps: GetStaticProps<GameProps> = async () => {
@@ -67,7 +69,16 @@ export const getStaticProps: GetStaticProps<GameProps> = async () => {
         ]
       },
       description: descriptionHTML,
-      details: gameDetailsMock
+      details: gameDetailsMock,
+      upComing: {
+        heading: 'Upcoming',
+        highlight: highlightMock,
+        games2: gamesMock
+      },
+      recommended: {
+        heading: 'You may like these games',
+        games1: gamesMock
+      }
     }
   }
 }
