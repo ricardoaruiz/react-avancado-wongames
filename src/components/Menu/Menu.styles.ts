@@ -120,6 +120,7 @@ export const MenuLink = styled.a`
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
     text-align: center;
+    cursor: pointer;
 
     &:hover {
       &::after {
