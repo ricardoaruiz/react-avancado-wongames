@@ -20,7 +20,6 @@ export const Wrapper = styled.article<WrapperProps>`
     flex-direction: column;
 
     position: relative;
-    max-width: 29.2rem;
     background-color: ${theme.colors.white};
     border: 0.1rem solid ${theme.colors.lightGray};
 
