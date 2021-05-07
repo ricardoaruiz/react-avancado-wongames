@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Base } from 'templates/Base'
 import {
+  Container,
+  Divider,
   GameCard,
   GameCardProps,
   Grid,
@@ -9,8 +11,6 @@ import {
   HighlightProps,
   Showcase
 } from 'components'
-
-import * as S from './Wishlist.styles'
 
 export type WishlistProps = {
   games?: GameCardProps[]
@@ -25,7 +25,7 @@ export const Wishlist = ({
 }: WishlistProps) => {
   return (
     <Base>
-      <S.WishGamesSection>
+      <Container>
         <Heading lineLeft lineColor="secondary" color="white">
           Wishlist
         </Heading>
@@ -35,7 +35,9 @@ export const Wishlist = ({
             <GameCard {...game} key={`wish-list-${index}`} />
           ))}
         </Grid>
-      </S.WishGamesSection>
+
+        <Divider />
+      </Container>
 
       <Showcase
         heading="You may like this games"
