@@ -1,9 +1,11 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 
 import { Base } from 'templates/Base'
 import {
   Container,
   Divider,
+  Empty,
   GameCard,
   GameCardProps,
   Grid,
@@ -23,6 +25,7 @@ export const Wishlist = ({
   recommendedGames,
   recommendedHighlight
 }: WishlistProps) => {
+  const router = useRouter()
   return (
     <Base>
       <Container>
@@ -30,11 +33,20 @@ export const Wishlist = ({
           Wishlist
         </Heading>
 
-        <Grid>
-          {games?.map((game, index) => (
-            <GameCard {...game} key={`wish-list-${index}`} />
-          ))}
-        </Grid>
+        {!games?.length ? (
+          <Empty
+            title="Your wishlist is empty"
+            description="Games added to your wishlist will appear here"
+            buttonLabel="Go back to home"
+            onButtonClick={() => router.push('/')}
+          />
+        ) : (
+          <Grid>
+            {games?.map((game, index) => (
+              <GameCard {...game} key={`wish-list-${index}`} />
+            ))}
+          </Grid>
+        )}
 
         <Divider />
       </Container>
