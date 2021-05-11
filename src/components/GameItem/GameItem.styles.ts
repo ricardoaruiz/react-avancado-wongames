@@ -61,3 +61,9 @@ export const Price = styled.span`
     border-radius: 0.2rem;
   `};
 `
+export const DownloadLink = styled.a`
+  ${({ theme }) => css`
+    color: ${theme.colors.primary};
+    margin-left: ${theme.spacings.xxsmall};
+  `};
+`

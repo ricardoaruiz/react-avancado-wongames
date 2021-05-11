@@ -29,3 +29,13 @@ export const Basic: Story<GameItemProps> = (args) => (
     <GameItem {...args} />
   </Container>
 )
+
+export const WithPayment: Story<GameItemProps> = (args) => (
+  <Container>
+    <GameItem {...args} />
+  </Container>
+)
+
+WithPayment.args = {
+  downloadLink: 'http://link'
+}
