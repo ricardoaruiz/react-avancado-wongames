@@ -1,41 +1,28 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
-import styled from 'styled-components'
-
 import GameItem, { GameItemProps } from './GameItem'
 
 export default {
   title: 'GameItem',
   component: GameItem,
-  parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'dark'
-    }
-  },
   args: {
-    image: '/img/red-dead-card.png',
+    img: 'https://source.unsplash.com/user/willianjusten/151x70',
     title: 'Red Dead Redemption 2',
-    price: 215
+    price: 'R$ 215,00'
   }
 } as Meta
 
-const Container = styled.div`
-  max-width: 80rem;
-  margin: 1rem auto 0 auto;
-`
-
-export const Basic: Story<GameItemProps> = (args) => (
-  <Container>
-    <GameItem {...args} />
-  </Container>
-)
+export const Default: Story<GameItemProps> = (args) => <GameItem {...args} />
 
 export const WithPayment: Story<GameItemProps> = (args) => (
-  <Container>
-    <GameItem {...args} />
-  </Container>
+  <GameItem {...args} />
 )
 
 WithPayment.args = {
-  downloadLink: 'http://link'
+  downloadLink: 'https://wongames.com/game/download/21312ndasd',
+  paymentInfo: {
+    flag: 'mastercard',
+    img: '/img/master-card.png',
+    number: '**** **** **** 4326',
+    purchaseDate: 'Purchase made on 07/20/2020 at 20:32'
+  }
 }

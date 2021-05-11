@@ -3,67 +3,103 @@ import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    display: flex;
-    align-items: flex-start;
     padding: ${theme.spacings.small};
-    border-bottom: 0.1px solid ${theme.colors.lightGray};
-    background-color: ${theme.colors.white};
-
+    border-bottom: 0.1rem solid ${theme.colors.lightGray};
     ${media.greaterThan('medium')`
-        padding: ${theme.spacings.medium};
+      display: flex;
     `}
-  `};
+  `}
 `
-export type ImageProps = {
-  src: string
-}
-export const Image = styled.div<ImageProps>`
-  ${({ src }) => css`
-    width: 100%;
-    max-width: 9.4rem;
-    height: 5.6rem;
 
-    background-image: url(${src});
-    background-position: center center;
-    background-size: cover;
-
-    ${media.greaterThan('medium')`
-        max-width: 15rem;
-        height: 7rem;
-    `}
-  `};
+export const GameContent = styled.div`
+  display: flex;
 `
-export const Info = styled.div`
+
+export const ImageBox = styled.div`
   ${({ theme }) => css`
-    margin-left: ${theme.spacings.small};
-  `};
+    flex-shrink: 0;
+    margin-right: 1.2rem;
+    width: 9.6rem;
+    height: 5.6rem;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    ${media.greaterThan('medium')`
+      margin-right: ${theme.spacings.xsmall};
+      width: 15rem;
+      height: 7rem;
+    `};
+  `}
 `
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
+
 export const Title = styled.h3`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
     line-height: ${theme.font.sizes.small};
+    font-weight: ${theme.font.bold};
+    color: ${theme.colors.black};
     margin-bottom: ${theme.spacings.xxsmall};
-
     ${media.greaterThan('medium')`
-        font-size: 2rem;
-        line-height: 2rem;
-    `}
-  `};
+      font-size: 2rem;
+      line-height: 2rem;
+    `};
+  `}
 `
-export const Price = styled.span`
+
+export const Price = styled.div`
   ${({ theme }) => css`
-    display: inline-block;
-    font-size: ${theme.font.sizes.small};
-    font-weight: ${theme.font.normal};
     color: ${theme.colors.white};
-    background-color: ${theme.colors.secondary};
     padding: 0.2rem ${theme.spacings.xxsmall};
-    border-radius: 0.2rem;
-  `};
+    background-color: ${theme.colors.secondary};
+    border-radius: ${theme.border.radius};
+    font-size: ${theme.font.sizes.small};
+    font-weight: ${theme.font.bold};
+  `}
 `
+
 export const DownloadLink = styled.a`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
     margin-left: ${theme.spacings.xxsmall};
-  `};
+  `}
+`
+
+export const PaymentContent = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.gray};
+    font-size: ${theme.font.sizes.small};
+    display: flex;
+    flex-direction: column;
+    min-width: 28rem;
+    margin-top: ${theme.spacings.xsmall};
+
+    ${media.greaterThan('medium')`
+      margin-top: 0;
+      flex: 1;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      align-items: flex-end;
+    `}
+  `}
+`
+
+export const CardInfo = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    img {
+      margin-left: ${theme.spacings.xxsmall};
+    }
+    ${media.lessThan('medium')`
+      margin-top: ${theme.spacings.xsmall};
+    `}
+  `}
 `

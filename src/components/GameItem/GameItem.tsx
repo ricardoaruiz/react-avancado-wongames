@@ -1,46 +1,62 @@
-import React from 'react'
 import { Download } from '@styled-icons/boxicons-solid/Download'
-
-import { toCurrencyString } from 'utils/numbers/helpers'
 
 import * as S from './GameItem.styles'
 
-export type GameItemProps = {
-  image: string
-  title: string
-  price: number
-  downloadLink?: string
+export type PaymentInfoProps = {
+  number: string
+  flag: string
+  img: string
+  purchaseDate: string
 }
 
-export const GameItem = ({
+export type GameItemProps = {
+  img: string
+  title: string
+  price: string
+  downloadLink?: string
+  paymentInfo?: PaymentInfoProps
+}
+
+const GameItem = ({
+  img,
   title,
   price,
-  image,
-  downloadLink
-}: GameItemProps) => {
-  return (
-    <S.Wrapper>
-      <S.Image src={image} role="image" aria-label={title} />
+  downloadLink,
+  paymentInfo
+}: GameItemProps) => (
+  <S.Wrapper>
+    <S.GameContent>
+      <S.ImageBox>
+        <img src={img} alt={title} />
+      </S.ImageBox>
 
-      <S.Info>
+      <S.Content>
         <S.Title>
           {title}
           {!!downloadLink && (
             <S.DownloadLink
               href={downloadLink}
               target="_blank"
-              role="link"
               aria-label={`Get ${title} here`}
             >
-              <Download size={18} />
+              <Download size={22} />
             </S.DownloadLink>
           )}
         </S.Title>
+        <S.Price>{price}</S.Price>
+      </S.Content>
+    </S.GameContent>
 
-        <S.Price>{toCurrencyString(price)}</S.Price>
-      </S.Info>
-    </S.Wrapper>
-  )
-}
+    {!!paymentInfo && (
+      <S.PaymentContent>
+        <p>{paymentInfo.purchaseDate}</p>
+        <S.CardInfo>
+          <span>{paymentInfo.number}</span>
+          <img src={paymentInfo.img} alt={paymentInfo.flag} />
+        </S.CardInfo>
+      </S.PaymentContent>
+    )}
+  </S.Wrapper>
+)
 
 export default GameItem
