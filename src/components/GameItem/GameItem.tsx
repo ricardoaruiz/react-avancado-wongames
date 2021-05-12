@@ -17,7 +17,7 @@ export type GameItemProps = {
   paymentInfo?: PaymentInfoProps
 }
 
-const GameItem = ({
+export const GameItem = ({
   img,
   title,
   price,
