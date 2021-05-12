@@ -33,6 +33,12 @@ exports[`<Empty /> should render correctly 1`] = `
   background: linear-gradient(180deg,#e35565 0%,#d958a6 100%),linear-gradient(180deg,#ff5f5f 0%,#f062c0 50%);
 }
 
+.c4:disabled {
+  cursor: not-allowed;
+  -webkit-filter: saturate(30%);
+  filter: saturate(30%);
+}
+
 .c4 svg {
   margin-right: 0.8rem;
 }

@@ -33,6 +33,12 @@ exports[`<Banner /> should render correctly snapshot 1`] = `
   background: linear-gradient(180deg,#e35565 0%,#d958a6 100%),linear-gradient(180deg,#ff5f5f 0%,#f062c0 50%);
 }
 
+.c5:disabled {
+  cursor: not-allowed;
+  -webkit-filter: saturate(30%);
+  filter: saturate(30%);
+}
+
 .c5 svg {
   margin-right: 0.8rem;
 }

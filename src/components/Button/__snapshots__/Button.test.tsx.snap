@@ -33,6 +33,12 @@ exports[`<Button /> should render a medium button by default - snapshot 1`] = `
   background: linear-gradient(180deg,#e35565 0%,#d958a6 100%),linear-gradient(180deg,#ff5f5f 0%,#f062c0 50%);
 }
 
+.c0:disabled {
+  cursor: not-allowed;
+  -webkit-filter: saturate(30%);
+  filter: saturate(30%);
+}
+
 .c0 svg {
   margin-right: 0.8rem;
 }
@@ -48,4 +54,4 @@ exports[`<Button /> should render a medium button by default - snapshot 1`] = `
     Buy now
   </span>
 </button>
-`;
+`

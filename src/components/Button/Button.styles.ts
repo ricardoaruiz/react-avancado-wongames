@@ -69,6 +69,11 @@ export const Wrapper = styled.button<WrapperProps>`
         linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
     }
 
+    &:disabled {
+      cursor: not-allowed;
+      filter: saturate(30%);
+    }
+
     & svg {
       margin-right: ${theme.spacings.xxsmall};
     }
