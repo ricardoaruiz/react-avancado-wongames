@@ -7,14 +7,14 @@ import { Button } from 'components/Button'
 import { Radio } from 'components/Radio'
 import { Heading } from 'components/Heading'
 
-type Card = {
+export type PaymentOptionCard = {
   img: string
   flag: string
   number: string
 }
 
 export type PaymentOptionsProps = {
-  cards?: Card[]
+  cards?: PaymentOptionCard[]
   handlePayment: () => void
 }
 

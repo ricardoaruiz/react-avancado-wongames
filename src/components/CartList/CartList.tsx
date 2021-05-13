@@ -5,7 +5,7 @@ import { GameItem } from 'components'
 
 import * as S from './CartList.styles'
 
-type CartItem = {
+export type CartItem = {
   img: string
   title: string
   price: number
