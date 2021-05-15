@@ -39,7 +39,7 @@ export const Basic: Story<TextFieldProps> = (args) => (
 
 Basic.args = {
   label: 'Email',
-  labelFor: 'email',
+  name: 'email',
   placeholder: 'Email',
   value: ''
 }
@@ -52,7 +52,7 @@ export const WithIcon: Story<TextFieldProps> = (args) => (
 
 WithIcon.args = {
   label: 'Email',
-  labelFor: 'email',
+  name: 'email',
   placeholder: 'Email',
   value: '',
   icon: <Email />
@@ -66,7 +66,7 @@ export const WithError: Story<TextFieldProps> = (args) => (
 
 WithError.args = {
   label: 'Email',
-  labelFor: 'email',
+  name: 'email',
   placeholder: 'Email',
   value: '',
   icon: <Email />,

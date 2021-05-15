@@ -138,6 +138,7 @@ exports[`<TextField /> should render error message when is passed 1`] = `
     <input
       class="c8 c9"
       id="email"
+      name="email"
       type="text"
       value=""
     />

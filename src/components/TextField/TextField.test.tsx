@@ -8,7 +8,7 @@ import TextField from './TextField'
 
 describe('<TextField />', () => {
   it('should render without label', () => {
-    const { container } = renderWithTheme(<TextField />)
+    const { container } = renderWithTheme(<TextField name="Label" />)
 
     expect(screen.getByRole('textbox')).toBeInTheDocument()
     expect(container.querySelector('label')).not.toBeInTheDocument()
@@ -87,7 +87,7 @@ describe('<TextField />', () => {
   })
 
   it('should render disable input when disabled is passed', () => {
-    renderWithTheme(<TextField label="Email" labelFor="email" disabled />)
+    renderWithTheme(<TextField label="Email" name="email" disabled />)
 
     expect(screen.getByRole('textbox')).toBeDisabled()
     expect(screen.getByRole('textbox')).toHaveStyle({
@@ -104,7 +104,7 @@ describe('<TextField />', () => {
     const { container } = renderWithTheme(
       <TextField
         label="Email"
-        labelFor="email"
+        name="email"
         error="Required field"
         icon={<Email data-testid="icon" />}
       />
