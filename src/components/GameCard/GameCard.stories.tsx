@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 import GameCard, { GameCardProps } from './GameCard'
 
 export default {
-  title: 'GameCard',
+  title: 'Game/GameCard',
   component: GameCard,
   parameters: {
     backgrounds: {
