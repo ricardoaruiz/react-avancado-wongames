@@ -18,13 +18,13 @@ describe('<CardsList />', () => {
 
     expect(screen.getByRole('img', { name: /visa/i })).toHaveAttribute(
       'src',
-      'img/visa.png'
+      '/img/visa.png'
     )
     expect(screen.getByText('**** **** **** 1234')).toBeInTheDocument()
 
     expect(screen.getByRole('img', { name: /master card/i })).toHaveAttribute(
       'src',
-      'img/master-card.png'
+      '/img/master-card.png'
     )
     expect(screen.getByText('**** **** **** 4321')).toBeInTheDocument()
   })

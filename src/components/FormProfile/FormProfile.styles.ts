@@ -4,7 +4,7 @@ import media from 'styled-media-query'
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
-    padding: ${theme.spacings.small};
+    padding: ${theme.spacings.xsmall};
   `};
 `
 
@@ -22,7 +22,7 @@ export const Form = styled.form`
 `
 
 export const Buttons = styled.div`
-  margin-top: 7rem;
+  margin-top: 2rem;
 
   ${media.greaterThan('medium')`
       justify-self: end;

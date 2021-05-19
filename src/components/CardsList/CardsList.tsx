@@ -18,7 +18,7 @@ export const CardsList = ({ cards }: CardListProps) => {
   return (
     <S.Wrapper>
       <Heading lineBottom lineColor="primary" color="black" size="small">
-        My Cards
+        My cards
       </Heading>
 
       {cards?.map(({ image, flag, number }) => (
