@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
     border-bottom: 0.1rem solid ${theme.colors.lightGray};
     ${media.greaterThan('medium')`
       display: flex;
+      gap: 1rem;
     `}
   `}
 `
@@ -38,15 +39,24 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex: 1;
 `
 
 export const Title = styled.h3`
   ${({ theme }) => css`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
     font-size: ${theme.font.sizes.small};
     line-height: ${theme.font.sizes.small};
     font-weight: ${theme.font.bold};
     color: ${theme.colors.black};
     margin-bottom: ${theme.spacings.xxsmall};
+
+    & p {
+      flex: 1;
+    }
+
     ${media.greaterThan('medium')`
       font-size: 2rem;
       line-height: 2rem;
@@ -78,12 +88,10 @@ export const PaymentContent = styled.div`
     font-size: ${theme.font.sizes.small};
     display: flex;
     flex-direction: column;
-    min-width: 28rem;
     margin-top: ${theme.spacings.xsmall};
 
     ${media.greaterThan('medium')`
       margin-top: 0;
-      flex: 1;
       flex-direction: column-reverse;
       justify-content: space-between;
       align-items: flex-end;

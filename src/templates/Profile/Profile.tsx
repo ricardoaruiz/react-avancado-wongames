@@ -11,7 +11,7 @@ export type ProfileProps = {
 }
 
 export const Profile = ({ children }: ProfileProps) => {
-  const router = useRouter()
+  const { asPath } = useRouter()
 
   return (
     <Base>
@@ -21,7 +21,7 @@ export const Profile = ({ children }: ProfileProps) => {
         </Heading>
 
         <S.Main>
-          <ProfileMenu activeLink={router.pathname} />
+          <ProfileMenu activeLink={asPath} />
           <S.Content>{children}</S.Content>
         </S.Main>
       </Container>

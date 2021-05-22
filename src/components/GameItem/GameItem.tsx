@@ -32,7 +32,7 @@ export const GameItem = ({
 
       <S.Content>
         <S.Title>
-          {title}
+          <p>{title}</p>
           {!!downloadLink && (
             <S.DownloadLink
               href={downloadLink}
