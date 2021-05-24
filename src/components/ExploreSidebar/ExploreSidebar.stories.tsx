@@ -17,3 +17,10 @@ export default {
 export const Basic: Story<ExplorerSidebarProps> = (args) => (
   <ExploreSidebar {...args} />
 )
+
+export const WithInitialValues: Story<ExplorerSidebarProps> = (args) => (
+  <ExploreSidebar {...args} />
+)
+WithInitialValues.args = {
+  initialValues: { windows: true, 'sort-by': 'LTH' }
+}

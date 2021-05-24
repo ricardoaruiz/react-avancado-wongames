@@ -16,11 +16,34 @@ export type ExploreSideBarSection = {
   options: ExploreSideBarOption[]
 }
 
-export type ExplorerSidebarProps = {
-  items: ExploreSideBarSection[]
+type ExploreSideBarValues = {
+  [field: string]: boolean | string | number | undefined
 }
 
-export const ExploreSidebar = ({ items }: ExplorerSidebarProps) => {
+export type ExplorerSidebarProps = {
+  items: ExploreSideBarSection[]
+  initialValues?: ExploreSideBarValues
+  onFilter: (values: ExploreSideBarValues) => void
+}
+
+export const ExploreSidebar = ({
+  items,
+  initialValues = {},
+  onFilter
+}: ExplorerSidebarProps) => {
+  const [values, setValues] = React.useState(initialValues)
+
+  const handleFilter = React.useCallback(() => {
+    onFilter(values)
+  }, [onFilter, values])
+
+  const handleChange = React.useCallback(
+    (name: string, value: string | number | boolean | undefined) => {
+      setValues((values) => ({ ...values, [name]: value }))
+    },
+    []
+  )
+
   return (
     <S.Wrapper>
       {items.map(({ name, options, type }) => (
@@ -38,6 +61,8 @@ export const ExploreSidebar = ({ items }: ExplorerSidebarProps) => {
                 label={label}
                 value={value}
                 key={`${name}-${label}`}
+                defaultChecked={value === values[name]}
+                onChange={() => handleChange(name, value)}
               />
             ) : (
               <Checkbox
@@ -45,29 +70,15 @@ export const ExploreSidebar = ({ items }: ExplorerSidebarProps) => {
                 label={label}
                 labelFor={name}
                 key={`${name}-${label}`}
+                isChecked={!!values[name]}
+                onCheck={(value) => handleChange(name, value)}
               />
             )
           )}
-
-          {/* {options.map(({ type, name, label, labelFor, value }) => {
-            if (type === 'radio') {
-              return (
-                <Radio
-                  label={label}
-                  labelFor={labelFor}
-                  value={value}
-                  name={name}
-                />
-              )
-            }
-            if (type === 'checkbox') {
-              return <Checkbox name={name} label={label} labelFor={labelFor} />
-            }
-          })} */}
         </div>
       ))}
 
-      <Button size="medium" fullWidth>
+      <Button size="medium" fullWidth onClick={handleFilter}>
         Filter
       </Button>
     </S.Wrapper>
