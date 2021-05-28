@@ -1,19 +1,43 @@
 import React from 'react'
 
 import { Base } from 'templates/Base'
-import { Container, GameCardProps } from 'components'
+import { GameCard, GameCardProps, Grid } from 'components'
+import {
+  ExploreSidebar,
+  ExploreSidebarSection
+} from 'components/ExploreSidebar'
+
+import * as S from './Games.styles'
+import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown'
 
 export type GamesProps = {
+  filterItems: ExploreSidebarSection[]
   games?: GameCardProps[]
 }
 
-export const Games = ({ games = [] }: GamesProps) => {
-  console.log('games', games)
+export const Games = ({ filterItems, games = [] }: GamesProps) => {
+  console.log(games)
   return (
     <Base>
-      <Container>
-        <h1>Games</h1>
-      </Container>
+      <S.Main>
+        <ExploreSidebar
+          items={filterItems}
+          onFilter={() => console.log('filter')}
+        />
+
+        <section>
+          <Grid>
+            {games?.map((game) => (
+              <GameCard {...game} key={game.title} />
+            ))}
+          </Grid>
+
+          <S.ShowMore role="button" onClick={() => console.log('showMore')}>
+            <p>Show More</p>
+            <ChevronDown size={50} />
+          </S.ShowMore>
+        </section>
+      </S.Main>
     </Base>
   )
 }

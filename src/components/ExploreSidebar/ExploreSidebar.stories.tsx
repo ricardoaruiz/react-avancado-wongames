@@ -1,35 +1,33 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
-import styled from 'styled-components'
-import ExploreSidebar, { ExplorerSidebarProps } from './ExploreSidebar'
+import ExploreSidebar, { ExploreSidebarProps } from './ExploreSidebar'
 
 import items from './mock'
 
 export default {
   title: 'ExploreSidebar',
   component: ExploreSidebar,
+  args: {
+    items
+  },
   parameters: {
+    layout: 'fullscreen',
     backgrounds: {
       default: 'dark'
     }
-  },
-  args: { items }
+  }
 } as Meta
 
-const Container = styled.div`
-  max-width: 50rem;
-`
-
-export const Basic: Story<ExplorerSidebarProps> = (args) => (
-  <Container>
+export const Default: Story<ExploreSidebarProps> = (args) => (
+  <div style={{ padding: 16, maxWidth: 320 }}>
     <ExploreSidebar {...args} />
-  </Container>
+  </div>
 )
 
-export const WithInitialValues: Story<ExplorerSidebarProps> = (args) => (
-  <Container>
-    <ExploreSidebar {...args} />
-  </Container>
+export const WithInitialValues: Story<ExploreSidebarProps> = (args) => (
+  <div style={{ padding: 16, maxWidth: 320 }}>
+    <ExploreSidebar
+      {...args}
+      initialValues={{ windows: true, sort_by: 'low-to-high' }}
+    />
+  </div>
 )
-WithInitialValues.args = {
-  initialValues: { windows: true, 'sort-by': 'LTH' }
-}

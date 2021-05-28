@@ -1,89 +1,106 @@
-import { ExploreSideBarSection } from './ExploreSidebar'
 export default [
   {
-    name: 'Price',
+    title: 'Price',
+    name: 'price',
     type: 'checkbox',
-    options: [
+    fields: [
       {
-        name: 'under-50',
-        label: 'Under $50'
+        label: 'Under $50',
+        name: 'under-50'
       },
       {
-        name: 'under-100',
-        label: 'Under $100'
+        label: 'Under $100',
+        name: 'under-100'
       },
       {
-        name: 'under-150',
-        label: 'Under $150'
+        label: 'Under $150',
+        name: 'under-150'
       },
       {
-        name: 'under-200',
-        label: 'Under $200'
+        label: 'Under $200',
+        name: 'under-200'
       },
       {
-        name: 'free',
-        label: 'Free'
+        label: 'Free',
+        name: 'free'
       },
       {
-        name: 'discounted',
-        label: 'Discounted'
+        label: 'Discounted',
+        name: 'discounted'
       }
     ]
   },
   {
-    name: 'Sort by',
+    title: 'Sort by',
+    name: 'sort_by',
     type: 'radio',
-    options: [
+    fields: [
       {
-        name: 'sort-by',
         label: 'High to low',
-        value: 'HTL'
+        name: 'high-to-low'
       },
       {
-        name: 'sort-by',
         label: 'Low to high',
-        value: 'LTH'
+        name: 'low-to-high'
       }
     ]
   },
   {
-    name: 'System',
+    title: 'System',
+    name: 'system',
     type: 'checkbox',
-    options: [
+    fields: [
       {
-        name: 'windows',
-        label: 'Windows'
+        label: 'Windows',
+        name: 'windows'
       },
       {
-        name: 'linux',
-        label: 'Linux'
+        label: 'Linux',
+        name: 'linux'
       },
       {
-        name: 'mac',
-        label: 'Mac'
+        label: 'MacOS',
+        name: 'macos'
       }
     ]
   },
   {
-    name: 'Genre',
+    title: 'Genre',
+    name: 'genre',
     type: 'checkbox',
-    options: [
+    fields: [
       {
-        name: 'action',
-        label: 'Action'
+        label: 'Action',
+        name: 'action'
       },
       {
-        name: 'adventure',
-        label: 'Adventure'
+        label: 'Adventure',
+        name: 'adventure'
       },
       {
-        name: 'fps',
-        label: 'FPS'
+        label: 'FPS',
+        name: 'fps'
       },
       {
-        name: 'mmorpg',
-        label: 'MMORPG'
+        label: 'MMORPG',
+        name: 'mmorpg'
+      },
+      {
+        label: 'RPG',
+        name: 'rpg'
+      },
+      {
+        label: 'Indie',
+        name: 'indie'
+      },
+      {
+        label: 'Shooters',
+        name: 'shooters'
+      },
+      {
+        label: 'Simulation',
+        name: 'simulation'
       }
     ]
   }
-] as ExploreSideBarSection[]
+]
