@@ -16,14 +16,18 @@ export type GamesProps = {
 }
 
 export const Games = ({ filterItems, games = [] }: GamesProps) => {
-  console.log(games)
+  const handleFilter = React.useCallback(() => {
+    return
+  }, [])
+
+  const handleShowMore = React.useCallback(() => {
+    return
+  }, [])
+
   return (
     <Base>
       <S.Main>
-        <ExploreSidebar
-          items={filterItems}
-          onFilter={() => console.log('filter')}
-        />
+        <ExploreSidebar items={filterItems} onFilter={handleFilter} />
 
         <section>
           <Grid>
@@ -32,7 +36,7 @@ export const Games = ({ filterItems, games = [] }: GamesProps) => {
             ))}
           </Grid>
 
-          <S.ShowMore role="button" onClick={() => console.log('showMore')}>
+          <S.ShowMore role="button" onClick={handleShowMore}>
             <p>Show More</p>
             <ChevronDown size={50} />
           </S.ShowMore>
