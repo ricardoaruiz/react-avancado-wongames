@@ -30,3 +30,9 @@ export const Basic: Story<CartDropdownProps> = (args) => (
     <CartDropdown {...args} />
   </Container>
 )
+
+export const EmptyCart: Story<CartDropdownProps> = () => (
+  <Container>
+    <CartDropdown items={[]} />
+  </Container>
+)
