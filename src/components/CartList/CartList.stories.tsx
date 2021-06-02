@@ -35,3 +35,12 @@ export const Basic: Story<CartListProps> = (args) => (
     <CartList {...args} />
   </Container>
 )
+
+export const WithButton: Story<CartListProps> = (args) => (
+  <Container>
+    <CartList {...args} />
+  </Container>
+)
+WithButton.args = {
+  hasButton: true
+}

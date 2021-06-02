@@ -4,6 +4,8 @@ import { toCurrencyString } from 'utils/numbers/helpers'
 import { GameItem } from 'components'
 
 import * as S from './CartList.styles'
+import { Button } from 'components/Button'
+import Link from 'next/link'
 
 export type CartItem = {
   img: string
@@ -12,10 +14,11 @@ export type CartItem = {
 }
 
 export type CartListProps = {
+  hasButton?: boolean
   items: CartItem[]
 }
 
-export const CartList = ({ items }: CartListProps) => {
+export const CartList = ({ hasButton = false, items }: CartListProps) => {
   const total = React.useMemo(() => {
     return items.reduce((total: number, item) => Number(item.price) + total, 0)
   }, [items])
@@ -32,8 +35,21 @@ export const CartList = ({ items }: CartListProps) => {
       ))}
 
       <S.Footer>
-        <S.TotalLabel>Total:</S.TotalLabel>
-        <S.TotalValue>{toCurrencyString(total)}</S.TotalValue>
+        {!hasButton ? (
+          <>
+            <S.TotalLabel>Total:</S.TotalLabel>
+            <S.TotalValue>{toCurrencyString(total)}</S.TotalValue>
+          </>
+        ) : (
+          <>
+            <S.TotalValue>{toCurrencyString(total)}</S.TotalValue>
+            <Link href="/cart" passHref>
+              <Button size="small" as="a">
+                Buy it now
+              </Button>
+            </Link>
+          </>
+        )}
       </S.Footer>
     </S.Wrapper>
   )

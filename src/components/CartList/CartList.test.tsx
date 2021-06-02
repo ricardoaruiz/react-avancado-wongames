@@ -14,7 +14,7 @@ jest.mock('components/GameItem', () => ({
 }))
 
 describe('<CartList />', () => {
-  it('should render correctly', () => {
+  it('should render without buy it now button', () => {
     renderWithTheme(<CartList {...props} />)
 
     expect(screen.getAllByTestId('MockedGameItem')).toHaveLength(2)
@@ -22,5 +22,19 @@ describe('<CartList />', () => {
     expect(screen.getByText('R$ 465,00')).toHaveStyle({
       color: '#F231A5'
     })
+  })
+
+  it('should render with buy it now button', () => {
+    renderWithTheme(<CartList {...props} hasButton={true} />)
+
+    expect(screen.getAllByTestId('MockedGameItem')).toHaveLength(2)
+    expect(screen.queryByText(/total:/i)).not.toBeInTheDocument()
+    expect(screen.getByText('R$ 465,00')).toHaveStyle({
+      color: '#F231A5'
+    })
+    expect(screen.getByRole('link', { name: /buy it now/i })).toHaveAttribute(
+      'href',
+      '/cart'
+    )
   })
 })
