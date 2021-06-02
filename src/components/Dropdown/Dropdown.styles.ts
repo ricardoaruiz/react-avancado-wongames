@@ -43,6 +43,7 @@ export const Content = styled.div<ContentProps>`
     margin-top: ${theme.spacings.small};
     right: 0;
     transition: transform 0.2s ease-in-out, opacity ${theme.transition.default};
+    width: max-content;
 
     ${isOpen ? contentModifiers.open() : contentModifiers.close()};
 
