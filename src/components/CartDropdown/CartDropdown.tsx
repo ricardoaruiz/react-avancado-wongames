@@ -22,8 +22,8 @@ export const CartDropdown = ({ items }: CartDropdownProps) => {
         ) : (
           <Empty
             title="Your cart is empty"
-            description="Go to explore and choose amazing games"
-            buttonLabel="Go to explore"
+            description="Go back to store and choose amazing games and offers"
+            buttonLabel="Go to store"
             onButtonClick={() => history.push('/')}
           />
         )}

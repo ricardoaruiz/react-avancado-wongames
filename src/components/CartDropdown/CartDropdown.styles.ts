@@ -13,9 +13,13 @@ export const Wrapper = styled.div<WrapperProps>`
       padding: ${isEmpty ? theme.spacings.xxsmall : 0};
     }
     ${EmptyStyles.Wrapper} {
-      width: 30rem;
+      width: 18rem;
+    }
+    ${EmptyStyles.Title} {
+      font-size: ${theme.font.sizes.large};
     }
     ${EmptyStyles.Description} {
+      font-size: ${theme.font.sizes.xsmall};
       color: ${theme.colors.black};
     }
   `};
