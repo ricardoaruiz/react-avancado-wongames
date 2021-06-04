@@ -86,11 +86,11 @@ exports[`<Banner /> should render correctly snapshot 1`] = `
 }
 
 @media (max-width:1170px) {
-  .c0 .sc-fFehDp {
+  .c0 .sc-ieebsP {
     right: 0;
   }
 
-  .c0 .sc-fFehDp::after {
+  .c0 .sc-ieebsP::after {
     display: none;
   }
 }

@@ -13,7 +13,7 @@ export const CartIcon = ({ quantity = 0 }: CartIconProps) => {
       {quantity > 0 && <S.Badge aria-label="cart items">{quantity}</S.Badge>}
       <ShoppintCartIcon
         role="image"
-        aria-label="Open Shopping Cart"
+        aria-label="Open Shopping Cart Icon"
         aria-hidden="false"
       />
     </S.Wrapper>

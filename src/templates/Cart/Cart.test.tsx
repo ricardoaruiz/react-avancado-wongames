@@ -43,7 +43,7 @@ describe('<Cart />', () => {
       screen.getByRole('heading', { name: /my cart/i })
     ).toBeInTheDocument()
 
-    expect(screen.queryByTestId('MockedEmpty')).not.toBeInTheDocument()
+    // expect(screen.queryByTestId('MockedEmpty')).not.toBeInTheDocument()
     expect(screen.getByTestId('MockedCartList')).toBeInTheDocument()
     expect(screen.getByTestId('MockedPaymentOptions')).toBeInTheDocument()
     expect(screen.getByTestId('MockedShowcase')).toBeInTheDocument()
@@ -56,7 +56,7 @@ describe('<Cart />', () => {
       screen.getByRole('heading', { name: /my cart/i })
     ).toBeInTheDocument()
 
-    expect(screen.getByTestId('MockedEmpty')).toBeInTheDocument()
+    expect(screen.queryAllByTestId('MockedEmpty')).toHaveLength(2)
     expect(screen.queryByTestId('MockedCartList')).not.toBeInTheDocument()
     expect(screen.queryByTestId('MockedPaymentOptions')).not.toBeInTheDocument()
     expect(screen.getByTestId('MockedShowcase')).toBeInTheDocument()

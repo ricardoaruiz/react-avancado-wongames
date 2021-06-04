@@ -19,7 +19,9 @@ describe('<Profile />', () => {
     renderWithTheme(<Profile>Lorem Ipsum</Profile>)
 
     expect(screen.getByText('Lorem Ipsum')).toBeInTheDocument()
-    expect(screen.getByText('My account')).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'My account' })
+    ).toBeInTheDocument()
     expect(screen.getByTestId('Mock ProfileMenu')).toBeInTheDocument()
   })
 })

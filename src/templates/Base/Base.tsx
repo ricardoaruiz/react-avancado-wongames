@@ -12,7 +12,7 @@ export const Base = ({ children }: BaseProps) => {
   return (
     <S.Wrapper>
       <Container>
-        <Menu />
+        <Menu username="Ricardo Ruiz" />
       </Container>
 
       <S.SectionContent>{children}</S.SectionContent>

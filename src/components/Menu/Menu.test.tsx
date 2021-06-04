@@ -1,5 +1,10 @@
+/* eslint-disable react/display-name */
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
+
+jest.mock('components/CartDropdown', () => ({
+  CartDropdown: () => <div data-testid="MockedCartDropdown" />
+}))
 
 import Menu from './Menu'
 
@@ -9,7 +14,7 @@ describe('<Menu />', () => {
 
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/search/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/open shopping cart/i)).toBeInTheDocument()
+    expect(screen.getByTestId('MockedCartDropdown')).toBeInTheDocument()
     expect(screen.getByLabelText(/won games/i)).toBeInTheDocument()
   })
 
@@ -51,7 +56,7 @@ describe('<Menu />', () => {
     expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument()
 
-    expect(screen.getByText(/my account/i)).toBeInTheDocument()
-    expect(screen.getByText(/wishlist/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/my account/i)).toHaveLength(2)
+    expect(screen.getAllByText(/wishlist/i)).toHaveLength(2)
   })
 })
