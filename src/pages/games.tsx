@@ -5,7 +5,7 @@ import { Games as GamesTemplate, GamesProps } from 'templates'
 import filterItems from 'components/ExploreSidebar/mock'
 import { initializeApollo } from 'utils/apollo'
 import { QUERY_GAMES } from 'graphql/queries/games'
-import { QueryGames } from 'graphql/generated/QueryGames'
+import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 
 const GamesPage = (props: GamesProps) => {
   return <GamesTemplate {...props} />
@@ -14,7 +14,7 @@ const GamesPage = (props: GamesProps) => {
 export const getStaticProps: GetStaticProps<GamesProps> = async () => {
   const client = initializeApollo()
 
-  const { data } = await client.query<QueryGames>({
+  const { data } = await client.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,
     variables: { limit: 9 }
   })
@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps<GamesProps> = async () => {
       filterItems,
       games: data.games.map(({ name, cover, developers, price }) => ({
         title: name,
-        image: `http://localhost:1337${cover.url}`,
+        image: `http://localhost:1337${cover!.url}`,
         developer: developers[0].name,
         normalPrice: price,
         withBorderRadius: false
