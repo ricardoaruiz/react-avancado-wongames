@@ -8,7 +8,7 @@ import GlobaStyles from 'styles/global'
 import theme from 'styles/theme'
 
 function App({ Component, pageProps }: AppProps) {
-  const client = useApollo()
+  const client = useApollo(pageProps.initialApolloState)
 
   return (
     <ApolloProvider client={client}>
