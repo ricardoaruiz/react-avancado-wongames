@@ -6,6 +6,7 @@ const props: GameCardSliderProps = {
   color: 'white',
   items: [
     {
+      slug: 'red-dead-redemption-ii',
       image: '/img/red-dead-card.png',
       title:
         'Read dead Redemption II  fdg dfogjdg jdpgodg psjg spdgjspgjs pgsj gps jgpsd gjspg',
@@ -15,6 +16,7 @@ const props: GameCardSliderProps = {
       withBorderRadius: false
     },
     {
+      slug: 'red-dead-redemption-ii',
       image: 'https://source.unsplash.com/user/willianjusten/1042x588',
       title: 'Read dead Redemption II',
       developer: 'Rockstar Games',

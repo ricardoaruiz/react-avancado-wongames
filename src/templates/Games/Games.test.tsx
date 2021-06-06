@@ -24,6 +24,7 @@ const props: GamesProps = {
   filterItems,
   games: [
     {
+      slug: 'red-dead-redemption-ii',
       image: '/img/red-dead-card.png',
       title: 'Read dead Redemption II',
       developer: 'Rockstar Games',
@@ -31,6 +32,7 @@ const props: GamesProps = {
       withBorderRadius: false
     },
     {
+      slug: 'red-dead-redemption-ii',
       image: '/img/red-dead-card.png',
       title: 'Game 02',
       developer: 'Rockstar Games',
