@@ -41,7 +41,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 // Pega os dados da página em tempo de build, os "params" recebido aqui vieram do retorno
 // do getStaticPaths
-export const getStaticProps: GetStaticProps<GameProps> = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { data } = await apolloClient.query<
     QueryGameBySlug,
     QueryGameBySlugVariables
