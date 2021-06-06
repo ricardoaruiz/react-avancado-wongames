@@ -4,7 +4,7 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import Auth from './Auth'
 
 describe('<Auth />', () => {
-  xit('should render correctly - with snapshot', () => {
+  it('should render correctly - with snapshot', () => {
     const { container } = renderWithTheme(
       <Auth title="Sign in">
         <p>Teste</p>

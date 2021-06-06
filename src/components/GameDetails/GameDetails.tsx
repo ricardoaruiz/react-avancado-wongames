@@ -15,7 +15,7 @@ export type GameDetailsRatings =
 export type GameDetailsProps = {
   developer: string
   releaseDate: string
-  platforms: GameDetailsPlatforms[]
+  platforms: GameDetailsPlatforms[] | string[]
   publisher: string
   rating: GameDetailsRatings
   genres: string[]
