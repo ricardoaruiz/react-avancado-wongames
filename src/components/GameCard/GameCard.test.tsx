@@ -8,6 +8,7 @@ import GameCard, { GameCardProps } from './GameCard'
 const mockedOnFavoriteChange = jest.fn()
 
 const initProps = {
+  slug: 'red-dead-redemption-ii',
   image: '/img/red-dead-card.png',
   title: 'Read dead Redemption II',
   developer: 'Rockstar Games',
@@ -43,6 +44,10 @@ describe('<GameCard />', () => {
     expect(screen.getByLabelText('R$ 235,00')).not.toHaveStyle({
       'text-decoration': 'line-through'
     })
+    expect(screen.getByRole('link', { name: initProps.title })).toHaveAttribute(
+      'href',
+      `/game/${initProps.slug}`
+    )
   })
 
   it('should render with promotional price', () => {

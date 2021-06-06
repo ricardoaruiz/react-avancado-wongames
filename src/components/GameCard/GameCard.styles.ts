@@ -60,7 +60,7 @@ const loadingImage = css`
   }
 `
 
-export const ImageBox = styled.div`
+export const ImageBox = styled.a`
   width: 100%;
   height: 13.7rem;
   ${loadingImage}
@@ -79,9 +79,13 @@ export const InfoContainer = styled.div`
   `};
 `
 
-export const Info = styled.div`
-  width: calc(100% - 2.5rem);
-  word-wrap: break-word;
+export const Info = styled.a`
+  ${({ theme }) => css`
+    width: calc(100% - 2.5rem);
+    word-wrap: break-word;
+    text-decoration: none;
+    color: ${theme.colors.black};
+  `};
 `
 
 export const Title = styled.h2`

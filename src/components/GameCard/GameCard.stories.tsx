@@ -32,6 +32,7 @@ export const Basic: Story<GameCardProps> = (args) => {
 }
 
 Basic.args = {
+  slug: 'red-dead-redemption-ii',
   image: '/img/red-dead-card.png',
   title: 'Read dead Redemption II',
   developer: 'Rockstar Games',
@@ -53,6 +54,7 @@ export const WithOfferPrice: Story<GameCardProps> = (args) => {
 }
 
 WithOfferPrice.args = {
+  slug: 'red-dead-redemption-ii',
   image: 'https://source.unsplash.com/user/willianjusten/1042x588',
   title: 'Read dead Redemption II',
   developer: 'Rockstar Games',
@@ -74,6 +76,7 @@ export const WithRibbon: Story<GameCardProps> = (args) => {
 }
 
 WithRibbon.args = {
+  slug: 'red-dead-redemption-ii',
   image: 'https://source.unsplash.com/user/willianjusten/1042x588',
   title: 'Read dead Redemption II',
   developer: 'Rockstar Games',

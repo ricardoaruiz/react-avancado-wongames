@@ -23,7 +23,8 @@ export const getStaticProps: GetStaticProps<GamesProps> = async () => {
     props: {
       revalidate: 60,
       filterItems,
-      games: data.games.map(({ name, cover, developers, price }) => ({
+      games: data.games.map(({ name, cover, slug, developers, price }) => ({
+        slug,
         title: name,
         image: `http://localhost:1337${cover!.url}`,
         developer: developers[0].name,

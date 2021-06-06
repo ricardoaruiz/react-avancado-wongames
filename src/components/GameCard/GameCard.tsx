@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { FavoriteBorder } from '@styled-icons/material/FavoriteBorder'
 import { AddShoppingCart } from '@styled-icons/material-outlined'
 import { Favorite } from '@styled-icons/material/Favorite'
@@ -10,6 +11,7 @@ import * as S from './GameCard.styles'
 import { Ribbon } from 'components/Ribbon'
 
 export type GameCardProps = {
+  slug: string
   image: string
   title: string
   developer: string
@@ -22,6 +24,7 @@ export type GameCardProps = {
 }
 
 export const GameCard = ({
+  slug,
   image,
   title,
   developer,
@@ -40,15 +43,19 @@ export const GameCard = ({
         </Ribbon>
       )}
 
-      <S.ImageBox>
-        <S.Image src={image} alt={title} aria-label={title} />
-      </S.ImageBox>
+      <Link href={`game/${slug}`} passHref>
+        <S.ImageBox>
+          <S.Image src={image} alt={title} aria-label={title} />
+        </S.ImageBox>
+      </Link>
 
       <S.InfoContainer>
-        <S.Info>
-          <S.Title>{title}</S.Title>
-          <S.Developer>{developer}</S.Developer>
-        </S.Info>
+        <Link href={`game/${slug}`} passHref>
+          <S.Info>
+            <S.Title>{title}</S.Title>
+            <S.Developer>{developer}</S.Developer>
+          </S.Info>
+        </Link>
         <S.FavButton
           role="button"
           onClick={
