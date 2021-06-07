@@ -17,6 +17,7 @@ export type ShowcaseProps = {
   highlight?: HighlightProps
   games1?: GameCardProps[]
   games2?: GameCardProps[]
+  color?: 'black' | 'white'
 }
 
 export const Showcase = ({
@@ -24,7 +25,8 @@ export const Showcase = ({
   headingColor = 'white',
   highlight,
   games1,
-  games2
+  games2,
+  color = 'white'
 }: ShowcaseProps) => {
   return (
     <S.Wrapper>
@@ -34,7 +36,7 @@ export const Showcase = ({
         </Heading>
       )}
 
-      {!!games1 && <GameCardSlider items={games1} color="white" />}
+      {!!games1 && <GameCardSlider items={games1} color={color} />}
 
       {!!highlight && (
         <S.SectionHighlight>
@@ -42,7 +44,7 @@ export const Showcase = ({
         </S.SectionHighlight>
       )}
 
-      {!!games2 && <GameCardSlider items={games2} color="white" />}
+      {!!games2 && <GameCardSlider items={games2} color={color} />}
     </S.Wrapper>
   )
 }

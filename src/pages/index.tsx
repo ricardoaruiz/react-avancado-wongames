@@ -16,28 +16,35 @@ export const Home = (props: HomeTemplateProps) => {
 export const getStaticProps: GetStaticProps = async () => {
   const client = initializeApollo()
 
-  const { data } = await client.query<QueryHome>({
+  const {
+    data: { banners, newGames }
+  } = await client.query<QueryHome>({
     query: QUERY_HOME
   })
 
   return {
     props: {
       revalidate: 60,
-      banners: data.banners.map(
-        ({ image, title, subtitle, button, ribbon }) => ({
-          img: `http://localhost:1337${image?.url}`,
-          title,
-          subtitle,
-          buttonLabel: button!.label,
-          buttonLink: button!.link,
-          ...(ribbon && {
-            ribbon: ribbon.text,
-            ribbonColor: ribbon.color,
-            ribbonSize: ribbon.size
-          })
+      banners: banners.map(({ image, title, subtitle, button, ribbon }) => ({
+        img: `http://localhost:1337${image?.url}`,
+        title,
+        subtitle,
+        buttonLabel: button!.label,
+        buttonLink: button!.link,
+        ...(ribbon && {
+          ribbon: ribbon.text,
+          ribbonColor: ribbon.color,
+          ribbonSize: ribbon.size
         })
-      ),
-      newGames: gamesMock,
+      })),
+      newGames: newGames.map(({ name, slug, cover, developers, price }) => ({
+        slug,
+        image: `http://localhost:1337${cover?.url}`,
+        title: name,
+        developer: developers[0]?.name || null,
+        normalPrice: price,
+        withBorderRadius: false
+      })),
       mostPopularHighlight: highlightMock,
       mostPopularGames: gamesMock,
       upCommingGames: gamesMock,

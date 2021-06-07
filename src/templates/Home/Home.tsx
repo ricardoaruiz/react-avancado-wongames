@@ -43,7 +43,12 @@ export const Home = ({
       </S.SectionHeader>
 
       <S.SectionNews>
-        <Showcase heading="News" games2={newGames} headingColor="black" />
+        <Showcase
+          heading="News"
+          games2={newGames}
+          headingColor="black"
+          color="black"
+        />
       </S.SectionNews>
 
       <Showcase
