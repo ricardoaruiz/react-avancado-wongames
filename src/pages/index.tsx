@@ -19,6 +19,13 @@ export const getStaticProps: GetStaticProps = async () => {
     query: QUERY_HOME
   })
 
+  const {
+    newGames: newGamesSection,
+    upcomingGames: upcomingGamesSection,
+    popularGames: popularGamesSection,
+    freeGames: freeGamesSection
+  } = sections!
+
   return {
     props: {
       // Atualiza a página a cada 60 segundos
@@ -39,7 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
       })),
 
       // New Games section
-      newGamesTitle: sections!.newGames!.title,
+      newGamesTitle: newGamesSection!.title,
       newGames: newGames.map(({ name, slug, cover, developers, price }) => ({
         slug,
         image: `http://localhost:1337${cover?.url}`,
@@ -50,13 +57,19 @@ export const getStaticProps: GetStaticProps = async () => {
       })),
 
       // Most Popular Games section
-      mostPopularGamesTitle: sections!.popularGames!.title,
+      mostPopularGamesTitle: popularGamesSection!.title,
       mostPopularHighlight: {
-        title: sections?.popularGames?.highlight?.title,
-        subtitle: sections?.popularGames?.highlight?.subtitle,
-        buttonLabel: sections?.popularGames?.highlight?.buttonLabel,
-        buttonLink: sections?.popularGames?.highlight?.buttonLink,
-        backgroundImage: `http://localhost:1337${sections?.popularGames?.highlight?.background?.url}`
+        title: popularGamesSection!.highlight?.title,
+        subtitle: popularGamesSection!.highlight?.subtitle,
+        buttonLabel: popularGamesSection!.highlight?.buttonLabel,
+        buttonLink: popularGamesSection!.highlight?.buttonLink,
+        backgroundImage: `http://localhost:1337${
+          popularGamesSection!.highlight?.background?.url
+        }`,
+        floatImage: `http://localhost:1337${
+          popularGamesSection!.highlight?.floatImage?.url
+        }`,
+        textAlign: popularGamesSection?.highlight?.alignment
       },
       mostPopularGames: sections!.popularGames!.games.map(
         ({ name, slug, cover, developers, price }) => ({
@@ -70,7 +83,7 @@ export const getStaticProps: GetStaticProps = async () => {
       ),
 
       // Upcomging Games section
-      upcomingGamesTitle: sections!.upcomingGames!.title,
+      upcomingGamesTitle: upcomingGamesSection!.title,
       upCommingGames: upcomingGames.map(
         ({ name, slug, cover, developers, price }) => ({
           slug,
@@ -82,15 +95,21 @@ export const getStaticProps: GetStaticProps = async () => {
         })
       ),
       upCommingHighlight: {
-        title: sections?.upcomingGames?.highlight?.title,
-        subtitle: sections?.upcomingGames?.highlight?.subtitle,
-        buttonLabel: sections?.upcomingGames?.highlight?.buttonLabel,
-        buttonLink: sections?.upcomingGames?.highlight?.buttonLink,
-        backgroundImage: `http://localhost:1337${sections?.upcomingGames?.highlight?.background?.url}`
+        title: upcomingGamesSection!.highlight?.title,
+        subtitle: upcomingGamesSection!.highlight?.subtitle,
+        buttonLabel: upcomingGamesSection!.highlight?.buttonLabel,
+        buttonLink: upcomingGamesSection!.highlight?.buttonLink,
+        backgroundImage: `http://localhost:1337${
+          upcomingGamesSection!.highlight?.background?.url
+        }`,
+        floatImage: `http://localhost:1337${
+          upcomingGamesSection!.highlight?.floatImage?.url
+        }`,
+        textAlign: upcomingGamesSection?.highlight?.alignment
       },
 
       // Free Games section
-      freeGamesTitle: sections!.freeGames!.title,
+      freeGamesTitle: freeGamesSection!.title,
       freeGames: freeGames.map(({ name, slug, cover, developers, price }) => ({
         slug,
         image: `http://localhost:1337${cover?.url}`,
@@ -100,11 +119,17 @@ export const getStaticProps: GetStaticProps = async () => {
         withBorderRadius: false
       })),
       freeGamesHighlight: {
-        title: sections?.freeGames?.highlight?.title,
-        subtitle: sections?.freeGames?.highlight?.subtitle,
-        buttonLabel: sections?.freeGames?.highlight?.buttonLabel,
-        buttonLink: sections?.freeGames?.highlight?.buttonLink,
-        backgroundImage: `http://localhost:1337${sections?.freeGames?.highlight?.background?.url}`
+        title: freeGamesSection!.highlight?.title,
+        subtitle: freeGamesSection!.highlight?.subtitle,
+        buttonLabel: freeGamesSection!.highlight?.buttonLabel,
+        buttonLink: freeGamesSection!.highlight?.buttonLink,
+        backgroundImage: `http://localhost:1337${
+          freeGamesSection!.highlight?.background?.url
+        }`,
+        floatImage: `http://localhost:1337${
+          freeGamesSection!.highlight?.floatImage?.url
+        }`,
+        textAlign: freeGamesSection?.highlight?.alignment
       }
     }
   }
