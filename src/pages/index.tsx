@@ -17,14 +17,17 @@ export const getStaticProps: GetStaticProps = async () => {
   const client = initializeApollo()
 
   const {
-    data: { banners, newGames }
+    data: { banners, sections, newGames, upcomingGames, freeGames }
   } = await client.query<QueryHome>({
     query: QUERY_HOME
   })
 
   return {
     props: {
+      // Atualiza a página a cada 60 segundos
       revalidate: 60,
+
+      // Banner
       banners: banners.map(({ image, title, subtitle, button, ribbon }) => ({
         img: `http://localhost:1337${image?.url}`,
         title,
@@ -37,6 +40,8 @@ export const getStaticProps: GetStaticProps = async () => {
           ribbonSize: ribbon.size
         })
       })),
+
+      // New Games section
       newGames: newGames.map(({ name, slug, cover, developers, price }) => ({
         slug,
         image: `http://localhost:1337${cover?.url}`,
@@ -45,13 +50,46 @@ export const getStaticProps: GetStaticProps = async () => {
         normalPrice: price,
         withBorderRadius: false
       })),
+
+      // Most Popular Games section
       mostPopularHighlight: highlightMock,
       mostPopularGames: gamesMock,
-      upCommingGames: gamesMock,
-      upCommingHighlight: highlightMock,
-      upCommingMoreGames: gamesMock,
-      freeGames: gamesMock,
-      freeGamesHighlight: highlightMock
+
+      // Upcomging Games section
+      upCommingGames: upcomingGames.map(
+        ({ name, slug, cover, developers, price }) => ({
+          slug,
+          image: `http://localhost:1337${cover?.url}`,
+          title: name,
+          developer: developers[0]?.name || null,
+          normalPrice: price,
+          withBorderRadius: false
+        })
+      ),
+      upCommingHighlight: {
+        title: sections?.upcomingGames?.highlight?.title,
+        subtitle: sections?.upcomingGames?.highlight?.subtitle,
+        buttonLabel: sections?.upcomingGames?.highlight?.buttonLabel,
+        buttonLink: sections?.upcomingGames?.highlight?.buttonLink,
+        backgroundImage: `http://localhost:1337${sections?.upcomingGames?.highlight?.background?.url}`
+      },
+
+      // Free Games section
+      freeGames: freeGames.map(({ name, slug, cover, developers, price }) => ({
+        slug,
+        image: `http://localhost:1337${cover?.url}`,
+        title: name,
+        developer: developers[0]?.name || null,
+        normalPrice: price,
+        withBorderRadius: false
+      })),
+      freeGamesHighlight: {
+        title: sections?.freeGames?.highlight?.title,
+        subtitle: sections?.freeGames?.highlight?.subtitle,
+        buttonLabel: sections?.freeGames?.highlight?.buttonLabel,
+        buttonLink: sections?.freeGames?.highlight?.buttonLink,
+        backgroundImage: `http://localhost:1337${sections?.freeGames?.highlight?.background?.url}`
+      }
     }
   }
 }

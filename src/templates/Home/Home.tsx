@@ -18,7 +18,6 @@ export type HomeProps = {
   mostPopularGames: GameCardProps[]
   upCommingGames: GameCardProps[]
   upCommingHighlight: HighlightProps
-  upCommingMoreGames: GameCardProps[]
   freeGames: GameCardProps[]
   freeGamesHighlight: HighlightProps
 }
@@ -30,7 +29,6 @@ export const Home = ({
   mostPopularGames,
   upCommingGames,
   upCommingHighlight,
-  upCommingMoreGames,
   freeGames,
   freeGamesHighlight
 }: HomeProps) => {
@@ -61,7 +59,6 @@ export const Home = ({
         heading="Upcomming"
         games1={upCommingGames}
         highlight={upCommingHighlight}
-        games2={upCommingMoreGames}
       />
 
       <Showcase
