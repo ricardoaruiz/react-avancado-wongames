@@ -6,9 +6,6 @@ import { initializeApollo } from 'utils/apollo'
 import { QUERY_HOME } from 'graphql/queries/home'
 import { QueryHome } from 'graphql/generated/QueryHome'
 
-import gamesMock from 'components/GameCardSlider/mock'
-import { basic as highlightMock } from 'components/Highlight/mock'
-
 export const Home = (props: HomeTemplateProps) => {
   return <HomeTemplate {...props} />
 }
@@ -52,8 +49,23 @@ export const getStaticProps: GetStaticProps = async () => {
       })),
 
       // Most Popular Games section
-      mostPopularHighlight: highlightMock,
-      mostPopularGames: gamesMock,
+      mostPopularHighlight: {
+        title: sections?.popularGames?.highlight?.title,
+        subtitle: sections?.popularGames?.highlight?.subtitle,
+        buttonLabel: sections?.popularGames?.highlight?.buttonLabel,
+        buttonLink: sections?.popularGames?.highlight?.buttonLink,
+        backgroundImage: `http://localhost:1337${sections?.popularGames?.highlight?.background?.url}`
+      },
+      mostPopularGames: sections!.popularGames!.games.map(
+        ({ name, slug, cover, developers, price }) => ({
+          slug,
+          image: `http://localhost:1337${cover?.url}`,
+          title: name,
+          developer: developers[0]?.name || null,
+          normalPrice: price,
+          withBorderRadius: false
+        })
+      ),
 
       // Upcomging Games section
       upCommingGames: upcomingGames.map(
