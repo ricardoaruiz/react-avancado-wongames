@@ -25,6 +25,7 @@ export const Highlight = ({
   textAlign = 'right',
   floatImage
 }: HighlightProps) => {
+  console.log('floatImage', floatImage)
   return (
     <S.Wrapper backgroundImage={backgroundImage} textAlign={textAlign}>
       {floatImage && (

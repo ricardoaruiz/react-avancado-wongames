@@ -66,9 +66,11 @@ export const getStaticProps: GetStaticProps = async () => {
         backgroundImage: `http://localhost:1337${
           popularGamesSection!.highlight?.background?.url
         }`,
-        floatImage: `http://localhost:1337${
-          popularGamesSection!.highlight?.floatImage?.url
-        }`,
+        floatImage: !popularGamesSection!.highlight?.floatImage?.url
+          ? null
+          : `http://localhost:1337${
+              popularGamesSection!.highlight?.floatImage?.url
+            }`,
         textAlign: popularGamesSection?.highlight?.alignment
       },
       mostPopularGames: sections!.popularGames!.games.map(
@@ -102,9 +104,11 @@ export const getStaticProps: GetStaticProps = async () => {
         backgroundImage: `http://localhost:1337${
           upcomingGamesSection!.highlight?.background?.url
         }`,
-        floatImage: `http://localhost:1337${
-          upcomingGamesSection!.highlight?.floatImage?.url
-        }`,
+        floatImage: !upcomingGamesSection!.highlight?.floatImage?.url
+          ? null
+          : `http://localhost:1337${
+              upcomingGamesSection!.highlight?.floatImage?.url
+            }`,
         textAlign: upcomingGamesSection?.highlight?.alignment
       },
 
@@ -126,9 +130,11 @@ export const getStaticProps: GetStaticProps = async () => {
         backgroundImage: `http://localhost:1337${
           freeGamesSection!.highlight?.background?.url
         }`,
-        floatImage: `http://localhost:1337${
-          freeGamesSection!.highlight?.floatImage?.url
-        }`,
+        floatImage: !freeGamesSection!.highlight?.floatImage?.url
+          ? null
+          : `http://localhost:1337${
+              freeGamesSection!.highlight?.floatImage?.url
+            }`,
         textAlign: freeGamesSection?.highlight?.alignment
       }
     }
