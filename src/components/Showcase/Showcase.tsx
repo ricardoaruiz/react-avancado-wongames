@@ -12,11 +12,11 @@ import {
 import * as S from './Showcase.styles'
 
 export type ShowcaseProps = {
-  heading?: string
+  heading?: string | null
   headingColor?: HeadingColor
-  highlight?: HighlightProps
-  games1?: GameCardProps[]
-  games2?: GameCardProps[]
+  highlight?: HighlightProps | null
+  games1?: GameCardProps[] | null
+  games2?: GameCardProps[] | null
   color?: 'black' | 'white'
 }
 

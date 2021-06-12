@@ -16,12 +16,14 @@ import {
 
 export type WishlistProps = {
   games?: GameCardProps[]
-  recommendedHighlight: HighlightProps
-  recommendedGames: GameCardProps[]
+  recommendedTitle?: string | null
+  recommendedHighlight?: HighlightProps | null
+  recommendedGames?: GameCardProps[] | null
 }
 
 export const Wishlist = ({
   games,
+  recommendedTitle,
   recommendedGames,
   recommendedHighlight
 }: WishlistProps) => {
@@ -52,7 +54,7 @@ export const Wishlist = ({
       </Container>
 
       <Showcase
-        heading="You may like this games"
+        heading={recommendedTitle || 'You may like this games'}
         headingColor="white"
         highlight={recommendedHighlight}
         games2={recommendedGames}

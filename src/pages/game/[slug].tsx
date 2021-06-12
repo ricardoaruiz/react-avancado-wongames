@@ -9,11 +9,17 @@ import { basic as highlightMock } from 'components/Highlight/mock'
 import { Game, GameProps } from 'templates'
 import { initializeApollo } from 'utils/apollo'
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
-import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games'
+import {
+  QUERY_GAMES,
+  QUERY_GAME_BY_SLUG,
+  QUERY_RECOMMENDED_GAMES
+} from 'graphql/queries/games'
 import {
   QueryGameBySlug,
   QueryGameBySlugVariables
 } from 'graphql/generated/QueryGameBySlug'
+import { QueryRecommendedGames } from 'graphql/generated/QueryRecommendedGames'
+import { mapGames } from 'utils/mappers'
 
 const apolloClient = initializeApollo()
 
@@ -54,6 +60,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     // Esse retorno faz o Next redirecionar para a página 404
     return { notFound: true }
   }
+
+  const { data: recommendedGames } = await apolloClient.query<
+    QueryRecommendedGames
+  >({
+    query: QUERY_RECOMMENDED_GAMES
+  })
 
   const {
     cover,
@@ -100,8 +112,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         games2: gamesMock
       },
       recommended: {
-        heading: 'You may like these games',
-        games1: gamesMock
+        heading: recommendedGames.recommended?.section?.title,
+        games1: mapGames(recommendedGames.recommended?.section?.games)
       }
     }
   }
