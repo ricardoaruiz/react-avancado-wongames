@@ -5,30 +5,28 @@ import { Cart, CartProps } from 'templates/Cart'
 
 import cartListMock from 'components/CartList/mock'
 import paymentOptions from 'components/PaymentOptions/mock'
-import { initializeApollo } from 'utils/apollo'
-import { QueryRecommendedGames } from 'graphql/generated/QueryRecommendedGames'
-import { QUERY_RECOMMENDED_GAMES } from 'graphql/queries/games'
 import { mapGames, mapHighlight } from 'utils/mappers'
+import { getRecommendedGames } from 'services'
 
 const CartPage = (props: CartProps) => {
   return <Cart {...props} />
 }
 
 export const getServerSideProps: GetServerSideProps<CartProps> = async () => {
-  const client = initializeApollo()
-
-  const { data } = await client.query<QueryRecommendedGames>({
-    query: QUERY_RECOMMENDED_GAMES
-  })
+  const recommendedGames = await getRecommendedGames()
 
   return {
     props: {
       cartItems: cartListMock,
       paymentOptionsCards: paymentOptions.cards,
       recommendedGames: {
-        heading: data.recommended?.section?.title || 'You may like this games',
-        highlight: mapHighlight(data.recommended!.section!.highlight),
-        games2: mapGames(data.recommended!.section!.games)
+        heading:
+          recommendedGames.recommended?.section?.title ||
+          'You may like this games',
+        highlight: mapHighlight(
+          recommendedGames.recommended!.section!.highlight
+        ),
+        games2: mapGames(recommendedGames.recommended!.section!.games)
       }
     }
   }

@@ -2,26 +2,13 @@ import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
+import { Game, GameProps } from 'templates'
+import { mapGames } from 'utils/mappers'
+import { getGame, getGames, getRecommendedGames } from 'services'
+
 // Remove when call api
 import gamesMock from 'components/GameCardSlider/mock'
 import { basic as highlightMock } from 'components/Highlight/mock'
-
-import { Game, GameProps } from 'templates'
-import { initializeApollo } from 'utils/apollo'
-import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
-import {
-  QUERY_GAMES,
-  QUERY_GAME_BY_SLUG,
-  QUERY_RECOMMENDED_GAMES
-} from 'graphql/queries/games'
-import {
-  QueryGameBySlug,
-  QueryGameBySlugVariables
-} from 'graphql/generated/QueryGameBySlug'
-import { QueryRecommendedGames } from 'graphql/generated/QueryRecommendedGames'
-import { mapGames } from 'utils/mappers'
-
-const apolloClient = initializeApollo()
 
 const Index = (props: GameProps) => {
   const router = useRouter()
@@ -36,36 +23,21 @@ const Index = (props: GameProps) => {
 
 // Pega todas os possíveis paths em tempo de build para criar as diversas páginas
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
-    query: QUERY_GAMES,
-    variables: { limit: 9 }
-  })
+  const games = await getGames({ limit: 9 })
 
-  const paths = data.games.map(({ slug }) => ({ params: { slug } }))
+  const paths = games.map(({ slug }) => ({ params: { slug } }))
   return { paths, fallback: true }
 }
 
 // Pega os dados da página em tempo de build, os "params" recebido aqui vieram do retorno
 // do getStaticPaths
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { data } = await apolloClient.query<
-    QueryGameBySlug,
-    QueryGameBySlugVariables
-  >({
-    query: QUERY_GAME_BY_SLUG,
-    variables: { slug: `${context.params?.slug}` }
-  })
+  const games = await getGame(`${context.params?.slug}`)
 
-  if (!data.games.length) {
+  if (!games.length) {
     // Esse retorno faz o Next redirecionar para a página 404
     return { notFound: true }
   }
-
-  const { data: recommendedGames } = await apolloClient.query<
-    QueryRecommendedGames
-  >({
-    query: QUERY_RECOMMENDED_GAMES
-  })
 
   const {
     cover,
@@ -80,7 +52,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     publisher,
     rating,
     categories
-  } = data.games[0]
+  } = games[0]
+
+  const recommendedGames = await getRecommendedGames()
 
   return {
     props: {

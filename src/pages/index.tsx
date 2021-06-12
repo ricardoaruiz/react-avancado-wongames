@@ -2,25 +2,23 @@ import { GetStaticProps } from 'next'
 
 import { Home as HomeTemplate, HomeProps as HomeTemplateProps } from 'templates'
 
-import { initializeApollo } from 'utils/apollo'
-import { QUERY_HOME } from 'graphql/queries/home'
 import { mapBanner, mapGames, mapHighlight } from 'utils/mappers'
-import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome'
+import { getHomeData } from 'services'
 
 export const Home = (props: HomeTemplateProps) => {
   return <HomeTemplate {...props} />
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const client = initializeApollo()
   const today = new Date().toISOString().slice(0, 10)
 
   const {
-    data: { banners, sections, newGames, upcomingGames, freeGames }
-  } = await client.query<QueryHome, QueryHomeVariables>({
-    query: QUERY_HOME,
-    variables: { date: today }
-  })
+    banners,
+    sections,
+    newGames,
+    upcomingGames,
+    freeGames
+  } = await getHomeData(today)
 
   const {
     newGames: newGamesSection,
