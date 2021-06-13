@@ -3,12 +3,13 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
 import { Game, GameProps } from 'templates'
-import { mapGames } from 'utils/mappers'
-import { getGame, getGames, getRecommendedGames } from 'services'
-
-// Remove when call api
-import gamesMock from 'components/GameCardSlider/mock'
-import { basic as highlightMock } from 'components/Highlight/mock'
+import { mapGames, mapHighlight } from 'utils/mappers'
+import {
+  getGame,
+  getGames,
+  getRecommendedGames,
+  getUpcommingGames
+} from 'services'
 
 const Index = (props: GameProps) => {
   const router = useRouter()
@@ -32,6 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // Pega os dados da página em tempo de build, os "params" recebido aqui vieram do retorno
 // do getStaticPaths
 export const getStaticProps: GetStaticProps = async (context) => {
+  const TODAY = new Date().toISOString().slice(0, 10)
   const games = await getGame(`${context.params?.slug}`)
 
   if (!games.length) {
@@ -54,11 +56,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     categories
   } = games[0]
 
+  const upcommingGames = await getUpcommingGames(TODAY)
   const recommendedGames = await getRecommendedGames()
 
   return {
     props: {
-      revalidate: 60,
+      revalidate: 10,
       cover: `http://localhost:1337${cover?.url}`,
       gameInfo: {
         title: name,
@@ -81,9 +84,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
         genres: categories.map((category) => category.name)
       },
       upComing: {
-        heading: 'Upcoming',
-        highlight: highlightMock,
-        games2: gamesMock
+        heading: upcommingGames.showcase?.upcomingGames?.title,
+        highlight: mapHighlight(
+          upcommingGames.showcase?.upcomingGames?.highlight
+        ),
+        games2: mapGames(upcommingGames.games)
       },
       recommended: {
         heading: recommendedGames.recommended?.section?.title,

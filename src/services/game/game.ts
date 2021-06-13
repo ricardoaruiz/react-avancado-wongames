@@ -17,10 +17,15 @@ import { QueryRecommendedGames } from 'graphql/generated/QueryRecommendedGames'
 import {
   QUERY_GAMES,
   QUERY_GAME_BY_SLUG,
-  QUERY_RECOMMENDED_GAMES
+  QUERY_RECOMMENDED_GAMES,
+  QUERY_UPCOMMING_GAMES
 } from 'graphql/queries/games'
 
 import { getGamesProps } from './types'
+import {
+  QueryUpcommingGames,
+  QueryUpcommingGamesVariables
+} from 'graphql/generated/QueryUpcommingGames'
 
 const apolloClient = initializeApollo()
 
@@ -61,11 +66,29 @@ export const getGame = async (
 
 /**
  * Get recommended games section data
- * @returns
+ * @returns games
  */
 export const getRecommendedGames = async (): Promise<QueryRecommendedGames> => {
   const { data } = await apolloClient.query<QueryRecommendedGames>({
     query: QUERY_RECOMMENDED_GAMES
+  })
+
+  return data
+}
+
+/**
+ * Get upcomming games
+ * @returns games
+ */
+export const getUpcommingGames = async (
+  date: string
+): Promise<QueryUpcommingGames> => {
+  const { data } = await apolloClient.query<
+    QueryUpcommingGames,
+    QueryUpcommingGamesVariables
+  >({
+    query: QUERY_UPCOMMING_GAMES,
+    variables: { date }
   })
 
   return data

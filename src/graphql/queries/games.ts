@@ -10,6 +10,7 @@ export const QUERY_GAMES = gql`
 
   ${GameFragment}
 `
+
 export const QUERY_GAME_BY_SLUG = gql`
   query QueryGameBySlug($slug: String!) {
     games(where: { slug: $slug }) {
@@ -43,6 +44,7 @@ export const QUERY_GAME_BY_SLUG = gql`
     }
   }
 `
+
 export const QUERY_RECOMMENDED_GAMES = gql`
   query QueryRecommendedGames {
     recommended {
@@ -55,6 +57,29 @@ export const QUERY_RECOMMENDED_GAMES = gql`
           ...GameFragment
         }
       }
+    }
+  }
+
+  ${HighlightFragment}
+  ${GameFragment}
+`
+
+export const QUERY_UPCOMMING_GAMES = gql`
+  query QueryUpcommingGames($date: Date!) {
+    showcase: home {
+      upcomingGames {
+        title
+        highlight {
+          ...HighlightFragment
+        }
+      }
+    }
+    games(
+      where: { release_date_gt: $date }
+      sort: "release_date:asc"
+      limit: 8
+    ) {
+      ...GameFragment
     }
   }
 
