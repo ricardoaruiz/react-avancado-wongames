@@ -1,8 +1,6 @@
-import { initializeApollo } from 'utils/apollo'
+import { apolloClient } from 'services/services'
 import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome'
 import { QUERY_HOME } from 'graphql/queries/home'
-
-const client = initializeApollo()
 
 /**
  * Get Home data
@@ -12,7 +10,7 @@ const client = initializeApollo()
 const getHomeData = async (todayDate: string): Promise<QueryHome> => {
   const {
     data: { banners, sections, newGames, upcomingGames, freeGames }
-  } = await client.query<QueryHome, QueryHomeVariables>({
+  } = await apolloClient.query<QueryHome, QueryHomeVariables>({
     query: QUERY_HOME,
     variables: { date: todayDate }
   })

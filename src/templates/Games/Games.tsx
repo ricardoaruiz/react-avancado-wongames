@@ -1,7 +1,10 @@
 import React from 'react'
+import { useQuery } from '@apollo/client'
+
+import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 
 import { Base } from 'templates/Base'
-import { GameCard, GameCardProps, Grid } from 'components'
+import { GameCard, Grid } from 'components'
 import {
   ExploreSidebar,
   ExploreSidebarSection
@@ -9,38 +12,65 @@ import {
 
 import * as S from './Games.styles'
 import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown'
+import { QUERY_GAMES } from 'graphql/queries/games'
 
 export type GamesProps = {
   filterItems: ExploreSidebarSection[]
-  games?: GameCardProps[]
 }
 
-export const Games = ({ filterItems, games = [] }: GamesProps) => {
+export const Games = ({ filterItems }: GamesProps) => {
+  const { data, loading, fetchMore } = useQuery<
+    QueryGames,
+    QueryGamesVariables
+  >(QUERY_GAMES, { variables: { limit: 15 } })
+
+  React.useEffect(() => {
+    console.log(loading ? 'Carregando...' : 'Carregado!')
+  }, [loading])
+
   const handleFilter = React.useCallback(() => {
     return
   }, [])
 
   const handleShowMore = React.useCallback(() => {
+    fetchMore({
+      variables: {
+        limit: 15,
+        start: data ? data?.games.length : 0
+      }
+    })
     return
-  }, [])
+  }, [data, fetchMore])
 
   return (
     <Base>
       <S.Main>
         <ExploreSidebar items={filterItems} onFilter={handleFilter} />
 
-        <section>
-          <Grid>
-            {games?.map((game) => (
-              <GameCard {...game} key={game.title} />
-            ))}
-          </Grid>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <section>
+            <Grid>
+              {data?.games.map(({ slug, name, cover, developers, price }) => {
+                const mappedGame = {
+                  slug,
+                  title: name,
+                  image: `http://localhost:1337${cover!.url}`,
+                  developer: developers[0].name,
+                  normalPrice: price,
+                  withBorderRadius: false
+                }
+                return <GameCard {...mappedGame} key={mappedGame.title} />
+              })}
+            </Grid>
 
-          <S.ShowMore role="button" onClick={handleShowMore}>
-            <p>Show More</p>
-            <ChevronDown size={50} />
-          </S.ShowMore>
-        </section>
+            <S.ShowMore role="button" onClick={handleShowMore}>
+              <p>Show More</p>
+              <ChevronDown size={50} />
+            </S.ShowMore>
+          </section>
+        )}
       </S.Main>
     </Base>
   )

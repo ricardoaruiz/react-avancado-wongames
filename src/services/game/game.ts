@@ -1,4 +1,4 @@
-import { initializeApollo } from 'utils/apollo'
+import { apolloClient } from 'services/services'
 
 import {
   QueryGameBySlug,
@@ -27,19 +27,18 @@ import {
   QueryUpcommingGamesVariables
 } from 'graphql/generated/QueryUpcommingGames'
 
-const apolloClient = initializeApollo()
-
 /**
  * Get all games
  * @param param0
  * @returns
  */
 export const getGames = async ({
-  limit = 9
+  limit = 9,
+  start = 0
 }: getGamesProps): Promise<QueryGames_games[]> => {
   const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,
-    variables: { limit }
+    variables: { limit, start }
   })
 
   return data.games
