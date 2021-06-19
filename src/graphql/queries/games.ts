@@ -1,5 +1,6 @@
-import { gql } from '@apollo/client'
+import { gql, QueryHookOptions, QueryResult, useQuery } from '@apollo/client'
 import { GameFragment, HighlightFragment } from 'graphql/fragments'
+import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 
 export const QUERY_GAMES = gql`
   query QueryGames($limit: Int!, $start: Int) {
@@ -86,3 +87,10 @@ export const QUERY_UPCOMMING_GAMES = gql`
   ${HighlightFragment}
   ${GameFragment}
 `
+
+// Hooks
+export const useQueryGames = (
+  options?: QueryHookOptions<QueryGames, QueryGamesVariables>
+): QueryResult<QueryGames, QueryGamesVariables> => {
+  return useQuery<QueryGames, QueryGamesVariables>(QUERY_GAMES, options)
+}

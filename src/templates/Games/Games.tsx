@@ -12,17 +12,16 @@ import {
 
 import * as S from './Games.styles'
 import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown'
-import { QUERY_GAMES } from 'graphql/queries/games'
+import { QUERY_GAMES, useQueryGames } from 'graphql/queries/games'
 
 export type GamesProps = {
   filterItems: ExploreSidebarSection[]
 }
 
 export const Games = ({ filterItems }: GamesProps) => {
-  const { data, loading, fetchMore } = useQuery<
-    QueryGames,
-    QueryGamesVariables
-  >(QUERY_GAMES, { variables: { limit: 15 } })
+  const { data, loading, fetchMore } = useQueryGames({
+    variables: { limit: 15 }
+  })
 
   React.useEffect(() => {
     console.log(loading ? 'Carregando...' : 'Carregado!')
