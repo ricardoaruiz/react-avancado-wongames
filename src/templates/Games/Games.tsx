@@ -1,7 +1,4 @@
 import React from 'react'
-import { useQuery } from '@apollo/client'
-
-import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 
 import { Base } from 'templates/Base'
 import { GameCard, Grid } from 'components'
@@ -12,7 +9,7 @@ import {
 
 import * as S from './Games.styles'
 import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown'
-import { QUERY_GAMES, useQueryGames } from 'graphql/queries/games'
+import { useQueryGames } from 'graphql/queries/games'
 
 export type GamesProps = {
   filterItems: ExploreSidebarSection[]
@@ -23,9 +20,7 @@ export const Games = ({ filterItems }: GamesProps) => {
     variables: { limit: 15 }
   })
 
-  React.useEffect(() => {
-    console.log(loading ? 'Carregando...' : 'Carregado!')
-  }, [loading])
+  console.log(data)
 
   const handleFilter = React.useCallback(() => {
     return
