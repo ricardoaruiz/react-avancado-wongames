@@ -1,28 +1,15 @@
 import React from 'react'
-import {
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
-  NormalizedCacheObject
-} from '@apollo/client'
-import { concatPagination } from '@apollo/client/utilities'
+import { ApolloClient, HttpLink, NormalizedCacheObject } from '@apollo/client'
+import apolloCache from './apolloCache'
 
-let apolloClient: ApolloClient<NormalizedCacheObject>
+let apolloClient: ApolloClient<NormalizedCacheObject | null>
 
 // Creating apollo client
 const createApolloClient = () => {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link: new HttpLink({ uri: 'http://localhost:1337/graphql' }),
-    cache: new InMemoryCache({
-      typePolicies: {
-        Query: {
-          fields: {
-            games: concatPagination()
-          }
-        }
-      }
-    })
+    cache: apolloCache
   })
 }
 
@@ -31,7 +18,7 @@ const createApolloClient = () => {
  * @param initialState
  * @returns
  */
-export const initializeApollo = (initialState = {}) => {
+export const initializeApollo = (initialState = null) => {
   const apolloClientGlobal = apolloClient ?? createApolloClient()
 
   // recuperando os dados do cache
@@ -51,7 +38,7 @@ export const initializeApollo = (initialState = {}) => {
  * @param initialState
  * @returns
  */
-export const useApollo = (initialState = {}) => {
+export const useApollo = (initialState = null) => {
   const store = React.useMemo(() => initializeApollo(initialState), [
     initialState
   ])

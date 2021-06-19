@@ -20,8 +20,6 @@ export const Games = ({ filterItems }: GamesProps) => {
     variables: { limit: 15 }
   })
 
-  console.log(data)
-
   const handleFilter = React.useCallback(() => {
     return
   }, [])

@@ -6,7 +6,9 @@ import { MockedProvider } from '@apollo/client/testing'
 import { Games, GamesProps } from './Games'
 import filterItems from 'components/ExploreSidebar/mock'
 import React from 'react'
-import { QUERY_GAMES } from 'graphql/queries/games'
+import userEvent from '@testing-library/user-event'
+import apolloCache from 'utils/apolloCache'
+import { fetchMoreGames, queryGames } from './mock'
 
 jest.mock('templates/Base', () => ({
   Base: ({ children }: { children: React.ReactNode }) => (
@@ -39,33 +41,7 @@ describe('GamesTemplate', () => {
 
   it('should be render sections', async () => {
     renderWithTheme(
-      <MockedProvider
-        mocks={[
-          {
-            request: {
-              query: QUERY_GAMES,
-              variables: { limit: 15 }
-            },
-            result: {
-              data: {
-                games: [
-                  {
-                    name: 'Loop Hero',
-                    slug: 'loop-hero',
-                    cover: {
-                      url: '/uploads/loop_hero_98d1e3f81e.jpg'
-                    },
-                    developers: [{ name: 'Four Quarters' }],
-                    price: 34.99,
-                    __typename: 'Game'
-                  }
-                ]
-              }
-            }
-          }
-        ]}
-        addTypename={false}
-      >
+      <MockedProvider mocks={[queryGames]}>
         <Games {...props} />
       </MockedProvider>
     )
@@ -88,5 +64,26 @@ describe('GamesTemplate', () => {
     expect(
       await screen.findByRole('button', { name: /show more/i })
     ).toBeInTheDocument()
+  })
+
+  it('should be render more games when show more button is clicked', async () => {
+    renderWithTheme(
+      <MockedProvider cache={apolloCache} mocks={[queryGames, fetchMoreGames]}>
+        <Games {...props} />
+      </MockedProvider>
+    )
+
+    //shows loading
+    expect(screen.getByText(/loading/i)).toBeInTheDocument()
+    expect(await screen.findByText(/loop hero/i)).toBeInTheDocument()
+
+    const btnFindMore = await screen.findByRole('button', {
+      name: /show more/i
+    })
+    userEvent.click(btnFindMore)
+    expect(await screen.findByText(/red dead redemption/i)).toBeInTheDocument()
+
+    // Muito louco!!!!!
+    // screen.logTestingPlaygroundURL()
   })
 })
