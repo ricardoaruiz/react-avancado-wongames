@@ -48,8 +48,8 @@ export const Games = ({ filterItems }: GamesProps) => {
                 const mappedGame = {
                   slug,
                   title: name,
-                  image: `http://localhost:1337${cover!.url}`,
-                  developer: developers[0].name,
+                  image: `http://localhost:1337${cover ? cover!.url : ''}`,
+                  developer: developers[0] ? developers[0].name : '',
                   normalPrice: price,
                   withBorderRadius: false
                 }
